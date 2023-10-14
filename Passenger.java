@@ -19,6 +19,7 @@ public class Passenger
      * @param pickup The pickup location, must not be null.
      * @param destination The destination location, must not be null.
      * @param name The passenger's name
+     * @param taxiName The taxi's name
      * @throws NullPointerException If either location is null.
      */
     public Passenger(Location pickup, Location destination, String name,
@@ -74,11 +75,18 @@ public class Passenger
     //TODO Debe poder devolver la posición donde hay que recoger al Passenger.
     
     //TODO Debe poder modificarse el nombre del taxi usado.
+    /**
+     * Sets the name of the taxi.
+     * @param taxiName The taxi's name
+     */    
     public void setTaxiName(String taxiName)
     {
         this.taxiName = taxiName;
     }
     //TODO Debe poder devolver el nombre del taxi usado..
+    /**
+     * @return The taxi's name
+     */  
     public String getTaxiName()
     {
         return taxiName;
