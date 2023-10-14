@@ -64,7 +64,9 @@ public class Passenger
         pickup + " to " + destination;
     }
     
-    
+    /**
+     * @return The pickup location
+     */    
     public Location getPickup() 
     {   
         return pickup;
