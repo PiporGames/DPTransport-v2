@@ -49,19 +49,31 @@ public class Location
     /**
      * Generate the next location to visit in order to
      * reach the destination.
-     * @param destination Where we want to get to.
+     * @param destination Where we want to get to, x X axis start location, y Y axis start location
      * @return A location in a direct line from this to
      *         destination.
      */
-    public Location nextLocation(Location destination)
+    public Location nextLocation(Location destination, int x, int y)
     {
-        //TODO ahora mismo este método devuelve directamente el destino final
-        //PERO DEBERIA ir calculando y devolviendo la siguiente posición por la que 
-        // va pasando el taxi hasta llegar al destino
-        Location aux = new Location(getX(), getY());
+        if (x != destination.getX()) {
+            if (x > destination.getX()){
+                x--;
+            } else {
+                x++;
+            }
+        }
+      
+        if (y != destination.getY()) {
+            if (x > destination.getY()){
+                y--;
+            } else {
+                y++;
+            }
+        } 
         
+        Location next = new Location(x,y);
         
-        return destination;
+        return next;
     }
 
     /**
