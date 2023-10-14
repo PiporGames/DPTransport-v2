@@ -73,7 +73,17 @@ public class Location
     public int distance(Location destination)
     {
         //TODO implementar este método que devuelve el número total de pasos para alcanzar el destino
-        return 1;
+        int distanceX = Math.abs(destination.getX() - getX());
+        int distanceY = Math.abs(destination.getY() - getY());
+        int finalDistance;
+        
+        if(distanceX > distanceY) {
+            finalDistance = distanceX;
+        }
+        else {
+            finalDistance = distanceY;
+        }
+        return finalDistance;
     }
 
     /**
