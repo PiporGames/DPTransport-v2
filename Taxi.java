@@ -1,22 +1,22 @@
 /**
  * Model the common elements of taxis and shuttles.
  * 
- * @author David J. Barnes and Michael Kölling
+ * @author David and Jose
  * @version 2016.02.29
  * @version 2023.10.10 DP classes 
  */
 public class Taxi 
 {
     // The Taxi Company of this Taxi.
-    public TransportCompany company;   //TODO cambiar a private
+    private TransportCompany company;   //TODO cambiar a private
     // Where the vehicle is.
-    public Location location;     //TODO cambiar a private
+    private Location location;     //TODO cambiar a private
     // Where the vehicle is headed.
-    public  Location targetLocation;   //TODO cambiar a private
+    private  Location targetLocation;   //TODO cambiar a private
     // Record how often the vehicle has nothing to do.
-    public int idleCount;       //TODO cambiar a private
+    private int idleCount;       //TODO cambiar a private
     //name of the taxi
-    public String name; //TODO cambiar a private
+    private String name; //TODO cambiar a private
     //TODO añadir campos necesarios
 
     /**

@@ -95,6 +95,7 @@ public class Location
         else {
             finalDistance = distanceY;
         }
+        
         return finalDistance;
     }
 
