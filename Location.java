@@ -53,8 +53,11 @@ public class Location
      * @return A location in a direct line from this to
      *         destination.
      */
-    public Location nextLocation(Location destination, int x, int y)
+    public Location nextLocation(Location destination)
     {
+        int x = getX();
+        int y = getY();
+        
         if (x != destination.getX()) {
             if (x > destination.getX()){
                 x--;
@@ -64,7 +67,7 @@ public class Location
         }
       
         if (y != destination.getY()) {
-            if (x > destination.getY()){
+            if (y > destination.getY()){
                 y--;
             } else {
                 y++;
@@ -84,7 +87,6 @@ public class Location
      */
     public int distance(Location destination)
     {
-        //TODO implementar este método que devuelve el número total de pasos para alcanzar el destino
         int distanceX = Math.abs(destination.getX() - getX());
         int distanceY = Math.abs(destination.getY() - getY());
         int finalDistance;
