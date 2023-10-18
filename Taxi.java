@@ -8,16 +8,19 @@
 public class Taxi 
 {
     // The Taxi Company of this Taxi.
-    private TransportCompany company;   //TODO cambiar a private
+    private TransportCompany company;
     // Where the vehicle is.
-    private Location location;     //TODO cambiar a private
+    private Location location;
     // Where the vehicle is headed.
-    private  Location targetLocation;   //TODO cambiar a private
+    private  Location targetLocation;
     // Record how often the vehicle has nothing to do.
-    private int idleCount;       //TODO cambiar a private
-    //name of the taxi
-    private String name; //TODO cambiar a private
-    //TODO añadir campos necesarios
+    private int idleCount;
+    // Name of the taxi.
+    private String name;
+    // Current passenger.
+    private Passenger passenger;
+    // Number of passengers transported.
+    private int passengersTransported;
 
     /**
      * Constructor of class Vehicle
@@ -37,7 +40,9 @@ public class Taxi
         this.location = location;
         targetLocation = null;
         idleCount = 0;
-        //TODO resto de inicializaciones pendientes
+        this.name = name;
+        passenger = null;
+        passengersTransported = 0;
     }
 
     /**
@@ -155,8 +160,7 @@ public class Taxi
      */
     public boolean isFree()
     {
-        //TODO  implementar este método
-        return true;
+        return passenger == null;
     }
 
     /**
@@ -164,7 +168,7 @@ public class Taxi
      */
     public void notifyPickupArrival()
     {
-        //TODO  implementar este método
+        //TODO implementar este método
     }
 
     /**
@@ -172,7 +176,7 @@ public class Taxi
      */
     public void notifyPassengerArrival(Passenger passenger)
     {
-        //TODO  implementar este método
+        //TODO implementar este método
     }
 
     /**
@@ -182,8 +186,8 @@ public class Taxi
      */
     public void pickup(Passenger passenger)
     {
-        //TODO  implementar este método
-
+        this.passenger = passenger;
+        targetLocation = passenger.getPickup();
     }
 
     /**
@@ -191,7 +195,8 @@ public class Taxi
      */
     public void offloadPassenger()
     {
-        //TODO  implementar este método
+        passenger = null;
+        targetLocation= null;
     }
 
     /**
@@ -199,8 +204,7 @@ public class Taxi
      */
     public int passengersTransported()
     {
-        //TODO  implementar este método
-        return 1;
+        return passengersTransported;
     }
     
     /**
@@ -208,7 +212,7 @@ public class Taxi
      */
     protected void incrementPassengersTransported()
     {
-        //TODO  implementar este método
+        passengersTransported++;
     }
 
     /**
@@ -217,9 +221,7 @@ public class Taxi
      */
     public int distanceToTheTargetLocation()
     {
-        //TODO  implementar este método
-        return 1;
-
+        return location.distance(targetLocation);
     }
 
     /**
@@ -227,7 +229,19 @@ public class Taxi
      */
     public void act()
     {
-        //TODO  implementar este método
+        if(targetLocation == null) {
+            idleCount++;
+        } else {
+            location = location.nextLocation(targetLocation);
+            if(location == passenger.getPickup()) {
+                notifyPickupArrival();
+                targetLocation = passenger.getDestination();
+            } else if (location == passenger.getDestination()) {
+                notifyPassengerArrival(passenger);
+                offloadPassenger();
+                incrementPassengersTransported();
+            }
+        }
     }
     
      /**
@@ -236,8 +250,11 @@ public class Taxi
      */
     public String showFinalInfo()
     {
-        //TODO  implementar este método
-        return "";
+        String info = name + ":\n" +
+                    location.toString() + "\n" +
+                    "Total passengers: " + passengersTransported + "\n" +
+                    "Time without moving: " + idleCount;
+        return info;
 
     }
 
