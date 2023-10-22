@@ -90,9 +90,25 @@ public class TransportCompany
      */
     private Taxi scheduleVehicle(Location location)
     {
-        //TODO implementar el método 
+        Taxi vh = null;
         
-        return null;
+        boolean enc = false;
+        
+        ComparadorTaxiLocation comp = new ComparadorTaxiLocation();
+        comp.setLocationDestination(location);
+        Collections.sort(vehicles, comp);
+        
+        Iterator <Taxi> it = vehicles.iterator();
+        
+        while(it.hasNext() && !enc){
+            vh = it.next();
+            
+            if(vh.isFree()){
+                enc = true;
+            }
+        }
+        
+        return vh;
     }
 
     /**
@@ -103,6 +119,8 @@ public class TransportCompany
     public boolean requestPickup(Passenger passenger)
     {
         //TODO implementar el método 
+        
+        
         return true;
     }
 
