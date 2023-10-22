@@ -1,23 +1,30 @@
 import java.util.*;
+import javafx.util.Pair;
 
 /**
  * Model the operation of a taxi company, operating different
  * types of vehicle. This version operates a single taxi.
  * 
- * @author David J. Barnes and Michael Kölling
+ * @author David, Manuel and Jose
  * @version 2016.02.29
  */
 public class TransportCompany  
 {
     // TODO definir todos sus campos
-    private String name;  //nombre de la compañía
-
+    private String name;  // name of the transport company
+    private ArrayList <Taxi> vehicles; //taxi list
+    private ArrayList <Passenger> passengers; //passengers list
+    private ArrayList <Pair<Taxi, Passenger>> assingments; //assingments
+    
     /**
      * Constructor for objects of class TransportCompany
      */
     public TransportCompany(String name)
     {
         this.name = name;
+        this.vehicles = new ArrayList <Taxi>();
+        this.passengers = new ArrayList <Passenger>();
+        
         //TODO implementar el resto del constructor 
 
     }
@@ -44,21 +51,21 @@ public class TransportCompany
     /**
      * @return The list of vehicles.
      */
-    public List<Taxi> getVehicles()
+    public ArrayList<Taxi> getVehicles()
     {       
         //TODO implementar el método 
-
-        return null;
+        
+        return vehicles;
     }
 
     /**
      * @return The list of passengers.
      */
-    public List<Passenger> getPassengers()
+    public ArrayList<Passenger> getPassengers()
     {
         //TODO implementar el método 
 
-        return null;
+        return passengers;
     }
 
     /**
@@ -67,6 +74,7 @@ public class TransportCompany
     public void addVehicle(Taxi vehicle)
     {
         //TODO implementar el método 
+        vehicles.add(vehicle);
     }
 
     /**
@@ -76,7 +84,8 @@ public class TransportCompany
     public void addPassenger(Passenger passenger)
     {
         //TODO implementar el método 
-
+        passengers.add(passenger);
+        Collections.sort(passengers, new ComparadorNombrePassenger());
     }
 
     /**
@@ -87,7 +96,7 @@ public class TransportCompany
     private Taxi scheduleVehicle(Location location)
     {
         //TODO implementar el método 
-
+        
         return null;
     }
 
