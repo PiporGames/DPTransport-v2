@@ -1,8 +1,7 @@
 /**
  * Model the common elements of taxis and shuttles.
  * 
- * @author David and Jose
- * @version 2016.02.29
+ * @author David, Jose and Manuel
  * @version 2023.10.10 DP classes 
  */
 public class Taxi 
@@ -151,7 +150,7 @@ public class Taxi
      */
     public String toString()
     {
-        return getClass().getName() + " " +getName()+" at " + getLocation();
+        return getClass().getName() + " " + getName() + " at " + getLocation();
     }
 
     /**
@@ -168,15 +167,17 @@ public class Taxi
      */
     public void notifyPickupArrival()
     {
-        //TODO implementar este método
+        company.arrivedAtPickup(this);
     }
 
     /**
      * Notify the company of our arrival at a passenger's destination.
+     * @param passenger The passenger inside the taxi
      */
     public void notifyPassengerArrival(Passenger passenger)
     {
-        //TODO implementar este método
+        offloadPassenger();
+        company.arrivedAtDestination(this, passenger);
     }
 
     /**
@@ -238,7 +239,6 @@ public class Taxi
                 targetLocation = passenger.getDestination();
             } else if (location == passenger.getDestination()) {
                 notifyPassengerArrival(passenger);
-                offloadPassenger();
                 incrementPassengersTransported();
             }
         }
