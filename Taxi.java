@@ -169,6 +169,7 @@ public class Taxi
     public void notifyPickupArrival()
     {
         //TODO implementar este método
+        
     }
 
     /**
@@ -177,6 +178,7 @@ public class Taxi
     public void notifyPassengerArrival(Passenger passenger)
     {
         //TODO implementar este método
+        
     }
 
     /**

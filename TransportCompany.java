@@ -14,7 +14,7 @@ public class TransportCompany
     private String name;  // name of the transport company
     private ArrayList <Taxi> vehicles; //taxi list
     private ArrayList <Passenger> passengers; //passengers list
-    private ArrayList <Pair<Taxi, Passenger>> assingments; //assingments
+    private ArrayList <Pair<Taxi, Passenger>> assignments; //assignments
     
     /**
      * Constructor for objects of class TransportCompany
@@ -24,8 +24,9 @@ public class TransportCompany
         this.name = name;
         this.vehicles = new ArrayList <Taxi>();
         this.passengers = new ArrayList <Passenger>();
+        this.assignments = new ArrayList <Pair<Taxi, Passenger>>();
         
-        //TODO implementar el resto del constructor 
+       
 
     }
 
@@ -51,20 +52,16 @@ public class TransportCompany
     /**
      * @return The list of vehicles.
      */
-    public ArrayList<Taxi> getVehicles()
-    {       
-        //TODO implementar el método 
-        
+    public List<Taxi> getVehicles()
+    {             
         return vehicles;
     }
 
     /**
      * @return The list of passengers.
      */
-    public ArrayList<Passenger> getPassengers()
+    public List<Passenger> getPassengers()
     {
-        //TODO implementar el método 
-
         return passengers;
     }
 
@@ -73,7 +70,6 @@ public class TransportCompany
      */
     public void addVehicle(Taxi vehicle)
     {
-        //TODO implementar el método 
         vehicles.add(vehicle);
     }
 
@@ -83,7 +79,6 @@ public class TransportCompany
      */
     public void addPassenger(Passenger passenger)
     {
-        //TODO implementar el método 
         passengers.add(passenger);
         Collections.sort(passengers, new ComparadorNombrePassenger());
     }
