@@ -6,11 +6,10 @@ import javafx.util.Pair;
  * types of vehicle. This version operates a single taxi.
  * 
  * @author David, Manuel and Jose
- * @version 2016.02.29
+ * @version 2023.10.23
  */
 public class TransportCompany  
 {
-    // TODO definir todos sus campos
     private String name;  // name of the transport company
     private ArrayList <Taxi> vehicles; //taxi list
     private ArrayList <Passenger> passengers; //passengers list

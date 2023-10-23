@@ -2,8 +2,7 @@
  * Model a passenger wishing to get from one
  * location to another.
  * 
- * @author David J. Barnes and Michael Kölling
- * @version 2016.02.29
+ * @author Jose, Manuel & David
  * @version 2023.10.10 DP classes 
  */
 public class Passenger
@@ -12,7 +11,6 @@ public class Passenger
     private Location pickup;
     private Location destination;
     private String taxiName;
-    //incluir campo para el nombre del taxi que lo ha transportado
 
     /**
      * Constructor for objects of class Passenger
@@ -25,7 +23,6 @@ public class Passenger
     public Passenger(Location pickup, Location destination, String name,
     String taxiName)
     {
-        //TODO modificar el constructor o crear otro constructor si necesario
         if(pickup == null) {
             throw new NullPointerException("Pickup location");
         }
@@ -36,7 +33,6 @@ public class Passenger
         this.destination = destination;
         this.name = name;
         this.taxiName = taxiName;
-        //incluir inicialización del campo para el nombre del taxi que lo ha transportado
     }
 
     /**
@@ -72,9 +68,7 @@ public class Passenger
     {   
         return pickup;
     }
-    //TODO Debe poder devolver la posición donde hay que recoger al Passenger.
     
-    //TODO Debe poder modificarse el nombre del taxi usado.
     /**
      * Sets the name of the taxi.
      * @param taxiName The taxi's name
@@ -83,7 +77,7 @@ public class Passenger
     {
         this.taxiName = taxiName;
     }
-    //TODO Debe poder devolver el nombre del taxi usado..
+    
     /**
      * @return The taxi's name
      */  
@@ -97,7 +91,6 @@ public class Passenger
      */
     public String showFinalInfo()
     {
-        // TO DO
         return "Passenger " + getName() + " in location " + getPickup() +  "transported by: " + getTaxiName();
     }
 

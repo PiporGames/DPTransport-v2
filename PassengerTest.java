@@ -6,9 +6,8 @@ import org.junit.Test;
 /**
  * The test class PassengerTest.
  *
- * @author  David J. Barnes and Michael Kölling
- * @version 2016.02.29
- * @version 2023.10.10 DP classes 
+ * @author  Jose, Manuel, & David
+ * @version 2023.10.10
  */
 public class PassengerTest
 {           
@@ -17,10 +16,7 @@ public class PassengerTest
     /**
      * Default constructor for test class PassengerTest
      */
-    public PassengerTest()
-    {
-        
-    }
+    public PassengerTest() {}
 
     /**
      * Sets up the test fixture.
@@ -35,17 +31,6 @@ public class PassengerTest
     }
 
     /**
-     * Tears down the test fixture.
-     *
-     * Called after every test case method.
-     */
-    @After
-    public void tearDown()
-    {
-        
-    }
-
-    /**
      * Test basic creation of a passenger.
      * Ensure that the pickup and destination locations
      * have been set.
@@ -57,10 +42,6 @@ public class PassengerTest
         assertEquals(p1.getDestination(),new Location(5, 2));
         assertEquals(p1.getName(),"Lucy");
         assertEquals(p1.getTaxiName(),"T1");
-        
-        //TODO implementar este método
-        // Testear la creación correcta de objetos de tipo Passenger comprobando 
-        // que la inicialización de campos como dirección de recogida y destino es correcta.
     }
 
     /**
@@ -71,9 +52,6 @@ public class PassengerTest
     public void testGetTaxiName()
     {
         assertEquals(p1.getTaxiName(), "T1");
-        //TODO implementar este método
-        // Testear el método que devuelve el nombre del taxi que ha transportado
-        //al pasajero/a
     }
 
     /**
@@ -84,7 +62,5 @@ public class PassengerTest
     public void testGetPickupLocation ()
     {
         assertEquals(p1.getPickup(), new Location(6,6));
-        //TODO implementar este método
-        // Testear el método que devuelve la dirección de recogida del objeto.
     }
 }

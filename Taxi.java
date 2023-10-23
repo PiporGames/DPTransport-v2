@@ -167,8 +167,6 @@ public class Taxi
      */
     public void notifyPickupArrival()
     {
-        //TODO implementar este método
-        
         company.arrivedAtPickup(this);
     }
 
@@ -178,7 +176,6 @@ public class Taxi
      */
     public void notifyPassengerArrival(Passenger passenger)
     {
-        //TODO implementar este método
         offloadPassenger();
         company.arrivedAtDestination(this, passenger);
     }

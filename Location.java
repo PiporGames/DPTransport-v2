@@ -1,14 +1,14 @@
 /**
  * Model a location in a city.
  * 
- * @author David J. Barnes and Michael Kölling
+ * @author Jose, Manuel & David
  * @version 2016.02.29
  * @version 2023.10.10 DP classes 
  */
 public class Location
 {
-    private int x;  //TODO cambiar a private
-    private int y;  //TODO cambiar a private
+    private int x; //x coord
+    private int y; //y coord
 
     /**
      * Model a location in the city.
