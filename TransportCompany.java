@@ -145,7 +145,7 @@ public class TransportCompany
             aux = it.next();
             
             Taxi tAux = aux.getKey();
-            if(tAux == taxi) {
+            if(tAux.equals(taxi)) {
                 enc = true;
                 Passenger passenger = aux.getValue();
                 it.remove();
