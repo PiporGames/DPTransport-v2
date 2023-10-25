@@ -119,15 +119,14 @@ public class TransportCompany
     {
         Taxi taxi = scheduleVehicle(passenger.getPickup());
         
-        if(taxi == null){
-            return false;
-        }
-        else{
+        boolean result = false;
+        if(taxi != null){
             Pair<Taxi, Passenger> p1 = new Pair(taxi, passenger);
-            assignments.add(assignments.size()-1, p1);         
+            assignments.add(assignments.size()-1, p1); 
+            result = true;
         }
 
-        return true;
+        return result;
     }
 
     /**
@@ -137,8 +136,26 @@ public class TransportCompany
     public void arrivedAtPickup(Taxi taxi)
     {
         //TODO Obtener el pasajero asignado al taxi y eliminar la asignación correspondiente taxi/pasajero
+        Iterator <Pair<Taxi, Passenger>> it = assignments.iterator();
+        Pair<Taxi, Passenger> aux = null;
+        
+        boolean enc = false;
+        while(it.hasNext() && !enc){
+            
+            aux = it.next();
+            
+            Taxi tAux = aux.getKey();
+            if(tAux == taxi) {
+                enc = true;
+                Passenger passenger = aux.getValue();
+                it.remove();
+                tAux.pickup(passenger);
+                passenger.setTaxiName(tAux.getName());
+                System.out.println("<<<< "+taxi + " picks up " + passenger.getName());
+            }       
+        }
         //TODO Descomentar siguiente línea cuando esté el método completamente implementado
-        //System.out.println("<<<< "+taxi + " picks up " + passenger.getName());
+    
         //TODO el pasajero debe guardar el nombre del taxi que le ha recogido
         //TODO el taxi debe recoger al pasajero
     }
