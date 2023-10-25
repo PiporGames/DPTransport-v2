@@ -117,9 +117,16 @@ public class TransportCompany
      */
     public boolean requestPickup(Passenger passenger)
     {
-        //TODO implementar el método 
+        Taxi taxi = scheduleVehicle(passenger.getPickup());
         
-        
+        if(taxi == null){
+            return false;
+        }
+        else{
+            Pair<Taxi, Passenger> p1 = new Pair(taxi, passenger);
+            assignments.add(assignments.size()-1, p1);         
+        }
+
         return true;
     }
 
