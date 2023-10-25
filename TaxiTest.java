@@ -6,16 +6,16 @@ import org.junit.Test;
 /**
  * The test class TaxiTest.
  *
- * @author  David J. Barnes and Michael Kölling
- * @version 2016.02.29
- * @version 2023.10.10 DP classes 
+ * @author  Jose, Manuel & David
+ * @version 2023.10.25 DP classes 
  */
 public class TaxiTest
 {
     private Taxi taxi;
+    private Taxi taxi2;
     private Passenger passenger;
-    //TODO
-    //crear más campos (si es necesario) 
+    private Passenger passenger2;
+    
     /**
      * Default constructor for test class TaxiTest
      */
@@ -32,26 +32,25 @@ public class TaxiTest
     public void setUp()
     {
         TransportCompany company = new TransportCompany("Compañía Taxis Cáceres");
+        TransportCompany company2 = new TransportCompany("ALSA Taxis");
         // Starting position for the taxi.
+        
         Location taxiLocation = new Location(0, 0);
-        // Locations for the passenger.
+        
         Location pickup = new Location(1, 2);
         Location destination = new Location(5, 6);
 
         passenger = new Passenger(pickup, destination,"Kevin", "T1");
         taxi = new Taxi(company, taxiLocation,"T1");
-        //TODO
-        //Completar (si es necesario) este método
-    }
+     
+        Location taxiLocation2 = new Location(0, 0);
+        
+        Location pickup2 = new Location(0, 0);
+        Location destination2 = new Location(4, 4);
 
-    /**
-     * Tears down the test fixture.
-     *
-     * Called after every test case method.
-     */
-    @After
-    public void tearDown()
-    {
+        passenger2 = new Passenger(pickup2, destination2,"Clara", "T2");
+        taxi2 = new Taxi(company2, taxiLocation2,"T2");
+        
     }
 
     /**
@@ -61,8 +60,27 @@ public class TaxiTest
     public void testCreation()
     {
         assertEquals(true, taxi.isFree());
-    }
+        assertEquals("T1", taxi.getName());
+        assertEquals(new Location(0,0), taxi.getLocation());
+        assertEquals(new Location(5,6),taxi.getTargetLocation());
+        assertEquals(0,taxi.getIdleCount());
+        }
 
+    /**
+     * Test the setters and getters of the Taxi class.
+     */
+    @Test
+    public void testSettersGetters(){
+        taxi.setLocation(new Location(3,3));
+        assertEquals(new Location(3,3), taxi.getLocation());
+        taxi.setTargetLocation(new Location(4,4));
+        assertEquals(new Location(4,4), taxi.getTargetLocation());
+        taxi.setPickupLocation(new Location(5,5));
+        assertEquals(new Location(5,5), taxi.getTargetLocation());
+        taxi.clearTargetLocation();
+        assertEquals(null, taxi.getTargetLocation());
+    }
+        
     /**
      * Test that a taxi is no longer free after it has
      * picked up a passenger.
@@ -70,7 +88,13 @@ public class TaxiTest
     @Test
     public void testPickup()
     {
-        //TODO implementar este método
+        taxi.pickup(passenger);
+        assertEquals(false, taxi.isFree());
+        assertEquals(passenger.getDestination(), taxi.getTargetLocation());
+ 
+        taxi2.pickup(passenger2);
+        assertEquals(false, taxi2.isFree());
+        assertEquals(passenger2.getDestination(), taxi2.getTargetLocation());
     }
 
     /**
@@ -79,7 +103,13 @@ public class TaxiTest
      */
     public void testOffload()
     {
-        //TODO implementar este método
+        taxi.offloadPassenger();
+        assertEquals(true, taxi.isFree());
+        assertEquals(null, taxi.getTargetLocation());
+        
+        taxi2.offloadPassenger();
+        assertEquals(true, taxi2.isFree());
+        assertEquals(null, taxi2.getTargetLocation());
     }
 
     /**
@@ -88,7 +118,17 @@ public class TaxiTest
      */
     public void testDelivery()
     {
-        //TODO implementar este método
+        taxi.pickup(passenger);
+        for(int i = 1; i <= taxi.distanceToTheTargetLocation(); i++){
+            taxi.act();
+        }
+        assertEquals(null, taxi.getTargetLocation());
+        
+        taxi2.pickup(passenger2);
+        for(int i = 1; i <= taxi2.distanceToTheTargetLocation(); i++){
+            taxi2.act();
+        }
+        assertEquals(null, taxi2.getTargetLocation());
     }
 }
 
