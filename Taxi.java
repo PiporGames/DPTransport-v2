@@ -160,7 +160,7 @@ public class Taxi
      */
     public boolean isFree()
     {
-        return passenger == null;
+        return targetLocation == null;
     }
 
     /**

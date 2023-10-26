@@ -133,18 +133,26 @@ public class DemoAvanzada
      * Initial info is showed with the information about taxis and passengers
      */
     private void showInicialInfo() {
+
         System.out.println("--->> Simulation of the company: "+company.getName()+" <<---");
         System.out.println("-->> Taxis of the company <<--");
-
-        //TODO ordenar y mostrar los taxis
-
-        //TODO ordenar y mostrar los pasajero/as
-        //para ordenar una colección aplicando un comparador, esta sería 
-        //la sintaxis (suponiendo que "passengers" es una colección donde
-        //la compañía de taxis almacena los pasajero/as):
-        //Collections.sort(passengers, new ComparadorNombrePassenger());
+        
+                List<Taxi> vehicles = company.getVehicles();
+        Collections.sort(vehicles, new ComparadorTaxiNombre());
+        
+        vehicles.get(0).showFinalInfo();
+        
+        for (Taxi tAux : vehicles) 
+            System.out.println(tAux.showFinalInfo());
 
         System.out.println("-->> Passengers requesting taxi <<--");
+        
+        List<Passenger> passengers = company.getPassengers();
+        Collections.sort(passengers, new ComparadorNombrePassenger());
+        
+        for (Passenger pAux : passengers) 
+            System.out.println(pAux.showFinalInfo());        
+        
         System.out.println("-->> ---------------- <<--");
 
         System.out.println("-->> Simulation start <<--");
@@ -156,6 +164,7 @@ public class DemoAvanzada
      * Final info is showed with the information about taxis and passengers
      */
     private void showFinalInfo() {
+
         System.out.println("");
         System.out.println("-->> ----------------- <<--");
         System.out.println("-->> End of simulation <<--");        
@@ -163,11 +172,22 @@ public class DemoAvanzada
         System.out.println("");
 
         System.out.println("-->> Taxis final information <<--");
-        //TODO ordenar y mostrar los taxis
+        
+        List<Taxi> vehicles = company.getVehicles();
+        Collections.sort(vehicles, new ComparadorTaxiNombre());
+        
+        vehicles.get(0).showFinalInfo();
+        
+        for (Taxi tAux : vehicles) 
+            System.out.println(tAux.showFinalInfo());
 
         System.out.println("-->> Passengers final information <<--");
-        //TODO ordenar y mostrar los pasajero/as
-
+        
+        List<Passenger> passengers = company.getPassengers();
+        Collections.sort(passengers, new ComparadorNombrePassenger());
+        
+        for (Passenger pAux : passengers) 
+            System.out.println(pAux.showFinalInfo());
     }
 
 }
