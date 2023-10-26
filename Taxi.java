@@ -234,12 +234,14 @@ public class Taxi
             idleCount++;
         } else {
             location = location.nextLocation(targetLocation);
-            if(location == passenger.getPickup()) {
-                notifyPickupArrival();
-                targetLocation = passenger.getDestination();
-            } else if (location == passenger.getDestination()) {
+            if(location.equals(targetLocation)) {
+                if(passenger == null) {
+                    notifyPickupArrival();
+                    targetLocation = passenger.getDestination();
+                } else if (location.equals(passenger.getDestination())) {
                 notifyPassengerArrival(passenger);
                 incrementPassengersTransported();
+                }
             }
         }
     }
