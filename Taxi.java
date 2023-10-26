@@ -25,6 +25,7 @@ public class Taxi
      * Constructor of class Vehicle
      * @param company The taxi company. Must not be null.
      * @param location The vehicle's starting point. Must not be null.
+     * @param name The name of the vehicle.
      * @throws NullPointerException If company or location is null.
      */
     public Taxi(TransportCompany company, Location location, String name)

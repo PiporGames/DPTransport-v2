@@ -11,12 +11,14 @@ import javafx.util.Pair;
 public class TransportCompany  
 {
     private String name;  // name of the transport company
-    private ArrayList <Taxi> vehicles; //taxi list
-    private ArrayList <Passenger> passengers; //passengers list
-    private ArrayList <Pair<Taxi, Passenger>> assignments; //assignments
+    private List <Taxi> vehicles; //taxi list
+    private List <Passenger> passengers; //passengers list
+    private List <Pair<Taxi, Passenger>> assignments; //taxi and passenger
+                                                      //assignments
     
     /**
      * Constructor for objects of class TransportCompany
+     * @param name The name of the TransportCompany
      */
     public TransportCompany(String name)
     {
@@ -24,9 +26,6 @@ public class TransportCompany
         this.vehicles = new ArrayList <Taxi>();
         this.passengers = new ArrayList <Passenger>();
         this.assignments = new ArrayList <Pair<Taxi, Passenger>>();
-        
-       
-
     }
 
     /**
@@ -135,7 +134,6 @@ public class TransportCompany
      */
     public void arrivedAtPickup(Taxi taxi)
     {
-        //TODO Obtener el pasajero asignado al taxi y eliminar la asignación correspondiente taxi/pasajero
         Iterator <Pair<Taxi, Passenger>> it = assignments.iterator();
         Pair<Taxi, Passenger> aux = null;
         
@@ -151,13 +149,9 @@ public class TransportCompany
                 it.remove();
                 tAux.pickup(passenger);
                 passenger.setTaxiName(tAux.getName());
-                System.out.println("<<<< "+taxi + " picks up " + passenger.getName());
+                System.out.println("<<<< " + taxi + " picks up " + passenger.getName());
             }       
         }
-        //TODO Descomentar siguiente línea cuando esté el método completamente implementado
-    
-        //TODO el pasajero debe guardar el nombre del taxi que le ha recogido
-        //TODO el taxi debe recoger al pasajero
     }
 
 }
