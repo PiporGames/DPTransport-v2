@@ -108,15 +108,16 @@ public class DemoOnePassanger
         List<Taxi> vehicles = company.getVehicles();
         Collections.sort(vehicles, new ComparadorTaxiNombre());
         
-        for (Taxi tAux : vehicles) tAux.showFinalInfo();
+        for (Taxi tAux : vehicles) System.out.println(tAux.showFinalInfo());
 
         System.out.println("-->> Passengers requesting taxi <<--");
-        System.out.println("-->> ---------------- <<--");
         
         List<Passenger> passengers = company.getPassengers();
         Collections.sort(passengers, new ComparadorNombrePassenger());
-        for (Passenger pAux : passengers) pAux.showFinalInfo();
         
+        for (Passenger pAux : passengers) System.out.println(pAux.showFinalInfo());
+        
+        System.out.println("-->> ---------------- <<--");
         System.out.println("-->> Simulation start <<--");
         System.out.println("-->> ---------------- <<--");
         System.out.println("");        
@@ -138,13 +139,15 @@ public class DemoOnePassanger
         List<Taxi> vehicles = company.getVehicles();
         Collections.sort(vehicles, new ComparadorTaxiNombre());
         
-        for (Taxi tAux : vehicles) tAux.showFinalInfo();
+        vehicles.get(0).showFinalInfo();
+        
+        for (Taxi tAux : vehicles) System.out.println(tAux.showFinalInfo());
         
         System.out.println("-->> Passengers final information <<--");
         
         List<Passenger> passengers = company.getPassengers();
         Collections.sort(passengers, new ComparadorNombrePassenger());
         
-        for (Passenger pAux : passengers) pAux.showFinalInfo();
+        for (Passenger pAux : passengers) System.out.println(pAux.showFinalInfo());
     }
 }

@@ -91,7 +91,8 @@ public class Passenger
      */
     public String showFinalInfo()
     {
-        return "Passenger " + getName() + " in location " + getPickup() +  "transported by: " + getTaxiName();
+        return "Passenger " + getName() + " in " + getPickup() 
+                +  " transported by: " + getTaxiName();
     }
 
 }
