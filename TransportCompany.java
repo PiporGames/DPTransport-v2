@@ -23,9 +23,9 @@ public class TransportCompany
     public TransportCompany(String name)
     {
         this.name = name;
-        this.vehicles = new ArrayList <Taxi>();
-        this.passengers = new ArrayList <Passenger>();
-        this.assignments = new ArrayList <Pair<Taxi, Passenger>>();
+        this.vehicles = new ArrayList <>();
+        this.passengers = new ArrayList <>();
+        this.assignments = new ArrayList <>();
     }
 
     /**
@@ -121,7 +121,8 @@ public class TransportCompany
         boolean result = false;
         if(taxi != null){
             Pair<Taxi, Passenger> p1 = new Pair(taxi, passenger);
-            assignments.add(assignments.size()-1, p1); 
+            taxi.setPickupLocation(passenger.getPickup());
+            assignments.add(assignments.size(), p1); 
             result = true;
         }
 

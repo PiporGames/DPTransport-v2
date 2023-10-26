@@ -189,7 +189,6 @@ public class Taxi
     public void pickup(Passenger passenger)
     {
         this.passenger = passenger;
-        targetLocation = passenger.getPickup();
     }
 
     /**
