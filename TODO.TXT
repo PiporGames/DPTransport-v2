@@ -1,0 +1,4 @@
+Por hacer:
+
+- Escribir README.TXT
+- Igualar la salida por pantalla de las clases a la de las plantillas
