@@ -3,7 +3,7 @@
  * location to another.
  * 
  * @author Jose, Manuel & David
- * @version 2023.10.10 DP classes 
+ * @version 2023.10.10
  */
 public class Passenger
 {
@@ -17,11 +17,9 @@ public class Passenger
      * @param pickup The pickup location, must not be null.
      * @param destination The destination location, must not be null.
      * @param name The passenger's name
-     * @param taxiName The taxi's name
      * @throws NullPointerException If either location is null.
      */
-    public Passenger(Location pickup, Location destination, String name,
-    String taxiName)
+    public Passenger(Location pickup, Location destination, String name)
     {
         if(pickup == null) {
             throw new NullPointerException("Pickup location");
@@ -32,7 +30,7 @@ public class Passenger
         this.pickup = pickup;
         this.destination = destination;
         this.name = name;
-        this.taxiName = taxiName;
+        this.taxiName = null;
     }
 
     /**
@@ -91,7 +89,7 @@ public class Passenger
      */
     public String showFinalInfo()
     {
-        return "Passenger " + getName() + " in " + getPickup() 
+        return "Passenger " + getName() + " in " + getDestination() 
                 +  " transported by: " + getTaxiName();
     }
 

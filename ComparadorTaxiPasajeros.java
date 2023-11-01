@@ -8,21 +8,15 @@ import java.util.*;
  * @author José, Manuel y David
  * @version 2023.11.1
  */
-public class ComparadorTaxiLocation implements Comparator<Taxi>
+public class ComparadorTaxiPasajeros implements Comparator<Taxi>
 {       
-    private Location destination;
-     
-    public void setLocationDestination(Location location){
-        destination = location;
-    }
-    
     public int compare(Taxi t1, Taxi t2){  
-        int d1 = t1.getLocation().distance(destination);
-        int d2 = t2.getLocation().distance(destination);
-        if(d1 == d2){
+        int p1 = t1.getPassengersTransported();
+        int p2 = t2.getPassengersTransported();
+        if(p1 == p2){
             return (t1.getName().compareTo(t2.getName())); 
         }
-        else if(d1 < d2){
+        else if(p1 < p2){
             return -1;            
         }
         else {

@@ -79,7 +79,7 @@ public class DemoOnePassanger
      */
     private void createPassengers() {
         Passenger passenger = new Passenger(new Location(6, 6),
-                new Location(5,2),"Lucy", "T1");
+                new Location(5,2),"Lucy");
         company.addPassenger(passenger);
     }
 
@@ -106,10 +106,10 @@ public class DemoOnePassanger
         System.out.println("-->> Taxis of the company <<--");
 
         List<Taxi> vehicles = company.getVehicles();
-        Collections.sort(vehicles, new ComparadorTaxiNombre());
+        Collections.sort(vehicles, new ComparadorTaxiPasajeros());
         
         for (Taxi tAux : vehicles) 
-            System.out.println(tAux.showFinalInfo());
+            System.out.println(tAux);
 
         System.out.println("-->> Passengers requesting taxi <<--");
         
@@ -117,8 +117,9 @@ public class DemoOnePassanger
         Collections.sort(passengers, new ComparadorNombrePassenger());
         
         for (Passenger pAux : passengers) 
-            System.out.println(pAux.showFinalInfo());
-        
+            System.out.println(pAux);
+            
+        System.out.println("");    
         System.out.println("-->> ---------------- <<--");
         System.out.println("-->> Simulation start <<--");
         System.out.println("-->> ---------------- <<--");
@@ -139,11 +140,11 @@ public class DemoOnePassanger
         System.out.println("-->> Taxis final information <<--");
         
         List<Taxi> vehicles = company.getVehicles();
-        Collections.sort(vehicles, new ComparadorTaxiNombre());
+        Collections.sort(vehicles, new ComparadorTaxiPasajeros());
         
         vehicles.get(0).showFinalInfo();
         
-        for (Taxi tAux : vehicles) 
+        for (Taxi tAux : vehicles)
             System.out.println(tAux.showFinalInfo());
         
         System.out.println("-->> Passengers final information <<--");

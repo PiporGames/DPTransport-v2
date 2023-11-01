@@ -37,8 +37,8 @@ public class TaxiDemo
         DemoAvanzada demoAvan = new DemoAvanzada();
         demoAvan.run();
         
-        TaxiDemo prue = new TaxiDemo();
-        prue.pruebas();
+        //TaxiDemo prue = new TaxiDemo();
+        //prue.pruebas();
     }
     
     private void pruebas() {

@@ -203,7 +203,7 @@ public class Taxi
     /**
      * @return how many passengers this vehicle has transported.
      */
-    public int passengersTransported()
+    public int getPassengersTransported()
     {
         return passengersTransported;
     }
@@ -234,6 +234,8 @@ public class Taxi
             idleCount++;
         } else {
             location = location.nextLocation(targetLocation);
+            System.out.println("@@@  Taxi: " + name + " moving to: " 
+                + location.getX() + " - " + location.getY());    
             if(location.equals(targetLocation)) {
                 if(passenger == null) {
                     notifyPickupArrival();
@@ -252,10 +254,9 @@ public class Taxi
      */
     public String showFinalInfo()
     {
-        String info = name + ":\n" +
-                    location.toString() + "\n" +
-                    "Total passengers: " + passengersTransported + "\n" +
-                    "Time without moving: " + idleCount;
+        String info = "Taxi " + name + " at " + location + " - " +
+                    "passengers transported: " + passengersTransported + " - " +
+                    "non active for: " + idleCount + " times";
         return info;
 
     }

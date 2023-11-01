@@ -40,7 +40,7 @@ public class TaxiTest
         Location pickup = new Location(1, 2);
         Location destination = new Location(5, 6);
 
-        passenger = new Passenger(pickup, destination,"Kevin", "T1");
+        passenger = new Passenger(pickup, destination,"Kevin");
         taxi = new Taxi(company, taxiLocation,"T1");
      
         Location taxiLocation2 = new Location(0, 0);
@@ -48,7 +48,7 @@ public class TaxiTest
         Location pickup2 = new Location(0, 0);
         Location destination2 = new Location(4, 4);
 
-        passenger2 = new Passenger(pickup2, destination2,"Clara", "T2");
+        passenger2 = new Passenger(pickup2, destination2,"Clara");
         taxi2 = new Taxi(company2, taxiLocation2,"T2");
         
     }

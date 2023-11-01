@@ -27,7 +27,7 @@ public class PassengerTest
     public void setUp()
     {
         p1 = new Passenger(new Location(6, 6),
-                new Location(5,2),"Lucy", "T1");
+                new Location(5,2),"Lucy");
     }
 
     /**
@@ -41,7 +41,7 @@ public class PassengerTest
         assertEquals(p1.getPickup(),new Location(6, 6));
         assertEquals(p1.getDestination(),new Location(5, 2));
         assertEquals(p1.getName(),"Lucy");
-        assertEquals(p1.getTaxiName(),"T1");
+        assertEquals(p1.getTaxiName(),null);
     }
 
     /**

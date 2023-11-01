@@ -44,7 +44,7 @@ public class TransportCompany
     public void arrivedAtDestination(Taxi vehicle,
     Passenger passenger)
     {
-        System.out.println(vehicle + " offloads " + passenger);
+        System.out.println(">>>> " + vehicle + " offloads " + passenger);
     }
 
     /**
@@ -124,6 +124,8 @@ public class TransportCompany
             taxi.setPickupLocation(passenger.getPickup());
             assignments.add(assignments.size(), p1); 
             result = true;
+            System.out.println("<<<< " + taxi + " go to pick up passenger " 
+                + passenger.getName() + " at " + passenger.getPickup());
         }
 
         return result;
