@@ -1,21 +1,15 @@
-Project: taxi-company-stage-one
-Authors: David J. Barnes and Michael Kölling
+Proyecto hecho por:
+    - Manuel Alonso González.
+    - David de Miguel Palomino.
+    - José Manuel de Torres Domínguez.
 
-This project is part of the material for chapter 14 of the book
+Para ejecutar el programa, ejecutar el main que hay en la clase TaxiDemo.
 
-   Objects First with Java - A Practical Introduction using BlueJ
-   Sixth edition
-   David J. Barnes and Michael Kölling
-   Pearson Education, 2016
-
-This project provides a partial implementation of a simulation of
-taxis operating on a city grid to pick up and transport passengers.
+Nuestro proyecto cuenta con los siguientes extras:
+    - Uso de iteradores en la clase TaxiCompany, en concreto en los métodos
+      scheduleVehicule y arrivedAtPickup.
+    - Uso correcto de las colecciones y comparadores a la hora de implementar
+      funcionalidades como la de ordenar ArrayList de elementos.
+    - Pruebas con JUnit de las clases especificadas.
+    - Uso del Git implementado en BlueJ con una antelación de 2 semanas.
     
-This is the third stage of this project. It illustrates the 
-implementation of a first stage of the project.
-
-How to start this project:
-    Create a Demo object and invoke its demo method.
-    A single taxi carries a single passenger to their destination.
-
-The test classes provide a little testing of basic functionality.
