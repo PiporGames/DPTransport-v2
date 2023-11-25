@@ -1,1 +1,33 @@
 Lista de cosas por hacer (eliminar este archivo al entregar):
+
+
+Passenger ---
+1. Nuevos atributos
+2. Método "act", “pay” y “calculateEvaluationValue"
+3. Dos nuevos tipos de Passanger [2] (usar herencia)
+
+
+Taxi ---
+1. Nuevos atributos
+2. Nuevo método “obtainComsumption”
+3. Nuevos tipos de Taxis [2] (usar herencia)
+
+
+TransportCompany ---
+1. Cambiar método de guardado a uno que no permita duplicados en Taxi-Passenger
+2. Cambios en métodos originales
+
+
+Demos ---
+1. Hacer los cambios pertinentes.
+
+
+Notas extras (bonus) ---
+1. usar Set y Map
+2. Uso correcto de la funcionalidad ofrecida por las Colecciones y los Comparadores
+3. una aplicación correcta de los conceptos herencia y polimorfismo
+4. Usar cuando sea apropiado y de forma correcta un tipo Enum (hasta 1 punto)
+5. Usar cuando sea apropiado y de forma correcta Interfaces en relación a la herencia definida
+6. En el proyecto se habrá hecho un uso correcto y justificado del mecanismo de excepciones (lanzar y capturar excepciones)
+7. Escritura de la salida por fichero con  el mismo formato que el utilizado para la salida por defecto por pantalla.
+8. Pruebas unitarias del proyecto con JUnit
