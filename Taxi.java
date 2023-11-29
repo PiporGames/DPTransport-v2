@@ -4,10 +4,12 @@
  * @author David, Jose and Manuel
  * @version 2023.10.10 DP classes 
  */
-public class Taxi 
+public abstract class Taxi 
 {
     // The Taxi Company of this Taxi.
     private TransportCompany company;
+    // Where the taxi was created.
+    private Location initialLocation;
     // Where the vehicle is.
     private Location location;
     // Where the vehicle is headed.
@@ -16,10 +18,16 @@ public class Taxi
     private int idleCount;
     // Name of the taxi.
     private String name;
-    // Current passenger.
+    // Passengers waiting for the taxi.
     private Passenger passenger;
     // Number of passengers transported.
     private int passengersTransported;
+    // Average comsumption of fuel of the taxi
+    private FuelComsumption fuelComsumption;
+    // Valuation of the taxi
+    private int valuation;
+    // Represents the number of people that fits in the taxi
+    private int occupation;
 
     /**
      * Constructor of class Vehicle
@@ -28,7 +36,8 @@ public class Taxi
      * @param name The name of the vehicle.
      * @throws NullPointerException If company or location is null.
      */
-    public Taxi(TransportCompany company, Location location, String name)
+    public Taxi(TransportCompany company, Location location, String name,
+                FuelComsumption comsumption, int occupation)
     {
         if(company == null) {
             throw new NullPointerException("company");
@@ -37,12 +46,16 @@ public class Taxi
             throw new NullPointerException("location");
         }
         this.company = company;
+        initialLocation = location;
         this.location = location;
         targetLocation = null;
         idleCount = 0;
         this.name = name;
         passenger = null;
         passengersTransported = 0;
+        fuelComsumption = comsumption;
+        valuation = 0;
+        this.occupation = occupation;
     }
 
     /**
@@ -61,7 +74,25 @@ public class Taxi
     {
         return location;
     }
+    
+    /**
+     * Get the initial location.
+     * @return Where this taxi was created.
+     */
+    public Location getInitialLocation()
+    {
+        return initialLocation;
+    }    
 
+    /**
+     * Get the comsumption of the taxi.
+     * @returns The comsumption.
+     */
+    public int getComsumption()
+    {
+        return fuelComsumption.getComsumption();
+    }
+    
     /**
      * Set the current location.
      * @param location Where it is. Must not be null.
@@ -247,6 +278,12 @@ public class Taxi
             }
         }
     }
+    
+    /**
+     * Calculates the total comsumption of the taxi
+     * @return The total comsumption
+     */
+    public abstract int obtainComsumption();
     
      /**
      * Return details of the taxi, such as where it is.
