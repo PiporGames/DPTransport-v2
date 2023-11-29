@@ -67,7 +67,7 @@ public abstract class Taxi
     }
 
     /**
-     * Get the location.
+     * Gets the location.
      * @return Where this taxi is currently located.
      */
     public Location getLocation()
