@@ -3,23 +3,29 @@
  * location to another.
  * 
  * @author Jose, Manuel & David
- * @version 2023.10.10
+ * @version 2023.11.27
  */
-public class Passenger
+public abstract class Passenger
 {
     private String name;
     private Location pickup;
     private Location destination;
     private String taxiName;
+    private int arrivalTime;
+    private int creditCard;
+    private reliability reliable;
 
     /**
      * Constructor for objects of class Passenger
      * @param pickup The pickup location, must not be null.
      * @param destination The destination location, must not be null.
      * @param name The passenger's name
+     * @param arrivalTime The time the passenger arrived at his destination.
+     * @param creditCard The money the Passenger has
+     * @param reliable The reliability of the Passenger
      * @throws NullPointerException If either location is null.
      */
-    public Passenger(Location pickup, Location destination, String name)
+    public Passenger(Location pickup, Location destination, String name, int arrivalTime, int creditCard, reliability reliable)
     {
         if(pickup == null) {
             throw new NullPointerException("Pickup location");
@@ -31,8 +37,32 @@ public class Passenger
         this.destination = destination;
         this.name = name;
         this.taxiName = null;
+        this.arrivalTime = arrivalTime;
+        this.creditCard = creditCard;
+        reliable = reliable;
     }
-
+    
+    /**
+     * Pays an amount of money to the cab, decreasing the credit card score.
+     */
+    public abstract void pay();
+    
+    /**
+     * @return The score the Passenger is going to rate to the cab.
+     */
+    public int calculateEvaluationValue(){
+        return(2 * reliable.getValor());
+    }
+    
+    
+    /**
+     * Does several actions, such as pay() and calculateEvauluationValue()
+     */
+    public void act(){
+        pay();
+        calculateEvaluationValue();
+    }
+    
     /**
      * @return The name of the passenger.
      */
@@ -82,6 +112,28 @@ public class Passenger
     public String getTaxiName()
     {
         return taxiName;
+    }
+    
+    /**
+     * @return The current reliability of the Passenger
+     */
+    protected reliability getReliability(){
+        return reliable;
+    }
+    
+    /**
+     * @return The current amount of money in the credit card.
+     */
+    protected int getCreditCard(){
+        return creditCard;
+    }
+
+    /**
+     * Sets the credit card value.
+     * @param value The credit card new value
+     */
+    protected void setCreditCard(int value){
+        creditCard = value;
     }
     
     /**
