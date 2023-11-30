@@ -39,7 +39,7 @@ public abstract class Passenger
         this.taxiName = null;
         this.arrivalTime = arrivalTime;
         this.creditCard = creditCard;
-        reliable = reliable;
+        this.reliable = reliable;
     }
     
     /**
@@ -64,9 +64,10 @@ public abstract class Passenger
     /**
      * Does several actions, such as pay() and calculateEvauluationValue()
      */
-    public void act(){
+    public int act(){
         pay();
-        calculateEvaluationValue();
+        int valoration = calculateEvaluationValue();
+        return (valoration);
     }
     
     /**
@@ -130,7 +131,7 @@ public abstract class Passenger
     /**
      * @return The current amount of money in the credit card.
      */
-    protected int getCreditCard(){
+    public int getCreditCard(){
         return creditCard;
     }
 
@@ -147,8 +148,7 @@ public abstract class Passenger
      */
     public String showFinalInfo()
     {
-        return "Passenger " + getName() + " in " + getDestination() 
-                +  " transported by: " + getTaxiName();
+        return "Passenger " + getName() + " in " + getDestination() +  " transported by: " + getTaxiName();
     }
 
 }
