@@ -5,29 +5,39 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class TaxiExclusive
+public class TaxiExclusive extends Taxi implements SerPopularEnRedes
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class TaxiExclusive
-     */
-    public TaxiExclusive()
+    private int weight;
+    private int popularity;
+    
+    public TaxiExclusive(TransportCompany company, Location location, 
+                        String name, FuelComsumption comsumption, int weight)
     {
-        // initialise instance variables
-        x = 0;
+        super(company, location, name, comsumption, 1);
+        this.weight = weight;
+        popularity = 6;
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+    
+    public void updatePopularity(int money)
     {
-        // put your code here
-        return x + y;
+        if (money > 20000) {
+            popularity += 4;
+        } else {
+            popularity--;
+        }
+    }
+    
+    @Override
+    public void offloadPassenger(Passenger passenger)
+    {
+        super.offloadPassenger(passenger);
+        updatePopularity(passenger.getCreditCard());
+    }
+    
+    @Override
+    public int obtainComsumption()
+    {
+        return (weight * getComsumption() 
+                * getLocation().distance(getInitialLocation()));        
     }
 }

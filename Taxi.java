@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
  * Model the common elements of taxis and shuttles.
  * 
@@ -19,7 +21,7 @@ public abstract class Taxi
     // Name of the taxi.
     private String name;
     // Passengers waiting for the taxi.
-    private Passenger passenger;
+    private Set<Passenger> passengers;
     // Number of passengers transported.
     private int passengersTransported;
     // Average comsumption of fuel of the taxi
@@ -51,7 +53,7 @@ public abstract class Taxi
         targetLocation = null;
         idleCount = 0;
         this.name = name;
-        passenger = null;
+        passengers = new TreeSet<>(new ComparadorArrivalTime());
         passengersTransported = 0;
         fuelComsumption = comsumption;
         valuation = 0;
@@ -208,7 +210,7 @@ public abstract class Taxi
      */
     public void notifyPassengerArrival(Passenger passenger)
     {
-        offloadPassenger();
+        offloadPassenger(passenger);
         company.arrivedAtDestination(this, passenger);
     }
 
@@ -219,14 +221,15 @@ public abstract class Taxi
      */
     public void pickup(Passenger passenger)
     {
-        this.passenger = passenger;
+        passengers.add(passenger);
     }
 
     /**
      * Offload the passenger.
      */
-    public void offloadPassenger()
+    public void offloadPassenger(Passenger passenger)
     {
+        valuation += passenger.act();
         passenger = null;
         targetLocation= null;
     }
@@ -268,12 +271,12 @@ public abstract class Taxi
             System.out.println("@@@  Taxi: " + name + " moving to: " 
                 + location.getX() + " - " + location.getY());    
             if(location.equals(targetLocation)) {
-                if(passenger == null) {
+                if(passengers.isEmpty()) {
                     notifyPickupArrival();
-                    targetLocation = passenger.getDestination();
-                } else if (location.equals(passenger.getDestination())) {
-                notifyPassengerArrival(passenger);
-                incrementPassengersTransported();
+                } else {
+                    notifyPassengerArrival((Passenger) 
+                                            passengers.toArray()[0]);
+                    incrementPassengersTransported();
                 }
             }
         }

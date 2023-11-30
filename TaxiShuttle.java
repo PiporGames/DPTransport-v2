@@ -8,13 +8,11 @@ import java.util.*;
  */
 public class TaxiShuttle extends Taxi
 {
-    private Set<Passenger> passengers;
-    
     public TaxiShuttle(TransportCompany company, Location location, 
                         String name, FuelComsumption comsumption, 
                         int occupation)
     {
-        super(company, location, name, comsumption, occupation);        
+        super(company, location, name, comsumption, occupation);
     }
     
     @Override
