@@ -4,9 +4,6 @@ Lista de cosas por hacer (eliminar este archivo al entregar):
 Passenger --- José Manuel
 
 Taxi --- Manuel
-1. Nuevos atributos
-2. Nuevo método “obtainComsumption”
-3. Nuevos tipos de Taxis [2] (usar herencia)
 4. Pruebas pertinentes
 
 TransportCompany --- Deivi
