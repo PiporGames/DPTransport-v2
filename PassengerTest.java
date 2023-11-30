@@ -26,8 +26,8 @@ public class PassengerTest
     @Before
     public void setUp()
     {
-        p1 = new PassengerNoVip(new Location(6, 6), new Location(5,2),"Lucy", 2, 500, reliability.HIGH);
-        p2 = new PassengerVip(new Location(4, 4), new Location(2,1),"Stuart", 2, 5500, reliability.LOW);
+        p1 = new PassengerNoVip(new Location(6, 6), new Location(5,2),"Lucy", 2, 500, Reliability.HIGH);
+        p2 = new PassengerVip(new Location(4, 4), new Location(2,1),"Stuart", 2, 5500, Reliability.LOW);
     }
 
     /**
@@ -44,7 +44,7 @@ public class PassengerTest
         assertEquals(p1.getTaxiName(),null);
         assertEquals(p1.getArrivalTime(),2);
         assertEquals(p1.getCreditCard(),500);
-        assertEquals(p1.getReliability(),reliability.HIGH);
+        assertEquals(p1.getReliability(),Reliability.HIGH);
         
         assertEquals(p2.getPickup(),new Location(4, 4));
         assertEquals(p2.getDestination(),new Location(2, 1));
@@ -52,7 +52,7 @@ public class PassengerTest
         assertEquals(p2.getTaxiName(),null);
         assertEquals(p2.getArrivalTime(),2);
         assertEquals(p2.getCreditCard(),5500);
-        assertEquals(p2.getReliability(),reliability.LOW);
+        assertEquals(p2.getReliability(),Reliability.LOW);
     }
 
     /**

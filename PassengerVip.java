@@ -19,7 +19,7 @@ public class PassengerVip extends Passenger
      * @param reliable The reliability of the Passenger
      * @throws NullPointerException If either location is null.
      */
-    public PassengerVip(Location pickup, Location destination, String name, int arrivalTime, int creditCard, reliability reliable)
+    public PassengerVip(Location pickup, Location destination, String name, int arrivalTime, int creditCard, Reliability reliable)
     {
         super(pickup, destination, name, arrivalTime, creditCard, reliable);
     }

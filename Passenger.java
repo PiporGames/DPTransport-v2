@@ -13,7 +13,7 @@ public abstract class Passenger
     private String taxiName;
     private int arrivalTime;
     private int creditCard;
-    private reliability reliable;
+    private Reliability reliable;
 
     /**
      * Constructor for objects of class Passenger
@@ -25,7 +25,7 @@ public abstract class Passenger
      * @param reliable The reliability of the Passenger
      * @throws NullPointerException If either location is null.
      */
-    public Passenger(Location pickup, Location destination, String name, int arrivalTime, int creditCard, reliability reliable)
+    public Passenger(Location pickup, Location destination, String name, int arrivalTime, int creditCard, Reliability reliable)
     {
         if(pickup == null) {
             throw new NullPointerException("Pickup location");
@@ -124,7 +124,7 @@ public abstract class Passenger
     /**
      * @return The current reliability of the Passenger
      */
-    protected reliability getReliability(){
+    protected Reliability getReliability(){
         return reliable;
     }
     

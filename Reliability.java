@@ -5,14 +5,14 @@
  * @author Jose, Manuel & David
  * @version 2023.11.27
  */
-public enum reliability
+public enum Reliability
 {
     HIGH(10),
     LOW(5);
     
     private final int Value;
     
-    reliability(int Value){
+    Reliability(int Value){
         this.Value = Value;
     }
     

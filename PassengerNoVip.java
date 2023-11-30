@@ -16,10 +16,10 @@ public class PassengerNoVip extends Passenger
      * @param name The passenger's name
      * @param arrivalTime The time the passenger arrived at his destination.
      * @param creditCard The money the Passenger has
-     * @param reliable The reliability of the Passenger
+     * @param reliable The Reliability of the Passenger
      * @throws NullPointerException If either location is null.
      */
-    public PassengerNoVip(Location pickup, Location destination, String name, int arrivalTime, int creditCard, reliability reliable)
+    public PassengerNoVip(Location pickup, Location destination, String name, int arrivalTime, int creditCard, Reliability reliable)
     {
         super(pickup, destination, name, arrivalTime, creditCard, reliable);
     }

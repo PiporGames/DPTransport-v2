@@ -2,10 +2,6 @@ Lista de cosas por hacer (eliminar este archivo al entregar):
 
 
 Passenger --- José Manuel
-1. Nuevos atributos
-2. Método "act", “pay” y “calculateEvaluationValue"
-3. Dos nuevos tipos de Passanger [2] (usar herencia)
-4. Pruebas pertinentes
 
 Taxi --- Manuel
 1. Nuevos atributos
