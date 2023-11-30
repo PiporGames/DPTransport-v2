@@ -54,6 +54,12 @@ public abstract class Passenger
         return(2 * reliable.getValor());
     }
     
+    /**
+     * @return The arrival time
+     */
+    public int getArrivalTime() {
+        return (arrivalTime);
+    }
     
     /**
      * Does several actions, such as pay() and calculateEvauluationValue()
