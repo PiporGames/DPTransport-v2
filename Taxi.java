@@ -230,7 +230,7 @@ public abstract class Taxi
     public void offloadPassenger(Passenger passenger)
     {
         valuation += passenger.act();
-        passenger = null;
+        passengers.remove(passengers.toArray()[0]);
         targetLocation= null;
     }
 
