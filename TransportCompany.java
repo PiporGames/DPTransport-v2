@@ -13,7 +13,7 @@ public class TransportCompany
     private String name;  // name of the transport company
     private List <Taxi> vehicles; //taxi list
     private List <Passenger> passengers; //passengers list
-    private LinkedHashMap<Taxi, Passenger> assignments; //taxi and passenger
+    private LinkedHashMap<Taxi, List<Passenger>> assignments; //taxi and passenger
                                                       //assignments
     
     /**
@@ -45,6 +45,12 @@ public class TransportCompany
     Passenger passenger)
     {
         System.out.println(">>>> " + vehicle + " offloads " + passenger);
+        passenger.act();
+        
+        List<Passenger> pAux = assignments.get(vehicle);
+        if(pAux.size() != 0){
+            vehicle.setTargetLocation(pAux.get(0).getPickup());
+        }
     }
 
     /**
@@ -96,12 +102,19 @@ public class TransportCompany
         comp.setLocationDestination(location);
         Collections.sort(vehicles, comp);
         
+        ComparadorArrivalTime compArrival = new ComparadorArrivalTime();
+        Collections.sort(passengers, compArrival);
+        
         Iterator <Taxi> it = vehicles.iterator();
         
         while(it.hasNext() && !enc){
             vh = it.next();
-            
+
             if(vh.isFree()){
+                
+            if(assignments.get(vh).get(0).getCreditCard() > 2000){
+                
+            }
                 enc = true;
             }
         }
@@ -120,9 +133,15 @@ public class TransportCompany
         
         boolean result = false;
         if(taxi != null){
-            //Pair<Taxi, Passenger> p1 = new Pair(taxi, passenger);
+            if(assignments.containsKey(taxi)){
+                List<Passengers> assignedPassengers = assignments.remove(taxi);
+            }
+            else{
+                
+                assignments.put(taxi, )
+            }
             taxi.setPickupLocation(passenger.getPickup());
-            assignments.put(taxi, passenger);
+            assignments.put(taxi, );
             result = true;
             System.out.println("<<<< " + taxi + " go to pick up passenger " 
                 + passenger.getName() + " at " + passenger.getPickup());
@@ -138,8 +157,8 @@ public class TransportCompany
     public void arrivedAtPickup(Taxi taxi)
     {
         //Iterator LinkedHashMap<Taxi, Passenger> it = assignments.iterator();
-        Iterator<Map.Entry<Taxi, Passenger>> it = assignments.entrySet().iterator();
-        Map.Entry<Taxi, Passenger> aux = null;
+        Iterator<Map.Entry<Taxi, List<Passenger>>> it = assignments.entrySet().iterator();
+        Map.Entry<Taxi, List<Passenger>> aux = null;
     
         boolean enc = false;
         while(it.hasNext() && !enc){
@@ -149,7 +168,7 @@ public class TransportCompany
             Taxi tAux = aux.getKey();
             if(tAux.equals(taxi)) {
                 enc = true;
-                Passenger passenger = aux.getValue();
+                Passenger passenger = aux.getValue().get(0);
                 it.remove();
                 tAux.pickup(passenger);
                 passenger.setTaxiName(tAux.getName());
