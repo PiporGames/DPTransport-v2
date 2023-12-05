@@ -32,8 +32,8 @@ public class PassengerTest
 
     /**
      * Test basic creation of a passenger.
-     * Ensure that the pickup and destination locations
-     * have been set.
+     * It test almost all methods of the Passenger class.
+     * The ones not tested here are tested in the rest of the available test methods.
      */
     @Test
     public void testCreation()
@@ -70,7 +70,7 @@ public class PassengerTest
     }
     
     /**
-     * Test of the ac() method.
+     * Test of the act() method.
      * Ensure that this method decrements the credit card value and returns the correct evaluation score.
      */
     @Test
@@ -85,7 +85,7 @@ public class PassengerTest
         assertEquals(score2, 25);
     }
     
-        /**
+    /**
      * Test various other set() methods.
      * Ensure that the value set by these methods are stored correctly.
      */

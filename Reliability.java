@@ -1,5 +1,5 @@
 /**
- * Enumeration class reliable
+ * Enumeration "class" Reliability
  * 
  * @author Jose, Manuel & David
  * @version 2023.11.27
