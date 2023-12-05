@@ -13,7 +13,7 @@ public class TransportCompany
     private String name;  // name of the transport company
     private List <Taxi> vehicles; //taxi list
     private List <Passenger> passengers; //passengers list
-    private List <Pair<Taxi, Passenger>> assignments; //taxi and passenger
+    private LinkedHashMap<Taxi, Passenger> assignments; //taxi and passenger
                                                       //assignments
     
     /**
@@ -25,7 +25,7 @@ public class TransportCompany
         this.name = name;
         this.vehicles = new ArrayList <>();
         this.passengers = new ArrayList <>();
-        this.assignments = new ArrayList <>();
+        this.assignments = new LinkedHashMap();
     }
 
     /**
@@ -120,9 +120,9 @@ public class TransportCompany
         
         boolean result = false;
         if(taxi != null){
-            Pair<Taxi, Passenger> p1 = new Pair(taxi, passenger);
+            //Pair<Taxi, Passenger> p1 = new Pair(taxi, passenger);
             taxi.setPickupLocation(passenger.getPickup());
-            assignments.add(assignments.size(), p1); 
+            assignments.put(taxi, passenger);
             result = true;
             System.out.println("<<<< " + taxi + " go to pick up passenger " 
                 + passenger.getName() + " at " + passenger.getPickup());
@@ -137,9 +137,10 @@ public class TransportCompany
      */
     public void arrivedAtPickup(Taxi taxi)
     {
-        Iterator <Pair<Taxi, Passenger>> it = assignments.iterator();
-        Pair<Taxi, Passenger> aux = null;
-        
+        //Iterator LinkedHashMap<Taxi, Passenger> it = assignments.iterator();
+        Iterator<Map.Entry<Taxi, Passenger>> it = assignments.entrySet().iterator();
+        Map.Entry<Taxi, Passenger> aux = null;
+    
         boolean enc = false;
         while(it.hasNext() && !enc){
             
