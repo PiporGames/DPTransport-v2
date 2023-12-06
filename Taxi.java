@@ -202,7 +202,7 @@ public abstract class Taxi
      */
     public boolean isFree()
     {
-        return targetLocation == null;
+        return passengers.size() < occupation && targetLocation == null;
     }
 
     /**
