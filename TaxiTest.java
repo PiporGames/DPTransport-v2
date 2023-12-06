@@ -40,16 +40,18 @@ public class TaxiTest
         Location pickup = new Location(1, 2);
         Location destination = new Location(5, 6);
 
-        passenger = new Passenger(pickup, destination,"Kevin");
-        taxi = new Taxi(company, taxiLocation,"T1");
+        passenger = new PassengerNoVip(pickup, destination,"Kevin");
+        taxi = new TaxiShuttle(company, taxiLocation,"T1", 
+                    FuelComsumption.MEDIUM, 4);
      
         Location taxiLocation2 = new Location(0, 0);
         
         Location pickup2 = new Location(0, 0);
         Location destination2 = new Location(4, 4);
 
-        passenger2 = new Passenger(pickup2, destination2,"Clara");
-        taxi2 = new Taxi(company2, taxiLocation2,"T2");
+        passenger2 = new PassengerVip(pickup2, destination2,"Clara");
+        taxi2 = new TaxiExclusive(company2, taxiLocation2,"T2",
+                    FuelComsumption.MEDIUM, 7000);
         
     }
 

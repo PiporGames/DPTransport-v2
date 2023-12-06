@@ -221,7 +221,7 @@ public abstract class Taxi
      */
     public void pickup(Passenger passenger)
     {
-        passengers.add(passenger);
+        if(passengers.size() < occupation) passengers.add(passenger);
     }
 
     /**
