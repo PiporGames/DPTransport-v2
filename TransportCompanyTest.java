@@ -95,8 +95,10 @@ public class TransportCompanyTest
         }
         assertEquals(p1.getPickup(), taxi1.getTargetLocation());
         
-        assertEquals(false, company.requestPickup(p2));
-        assertEquals(false, company.requestPickup(p1));
-        assertEquals(true, company.requestPickup(p1));
+        taxi2.pickup(p2);
+        for(int i = 1; i <= taxi2.distanceToTheTargetLocation(); i++){
+            taxi2.act();
+        }        
+        assertEquals(p2.getPickup(), taxi2.getTargetLocation());
     }
 }
