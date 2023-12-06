@@ -45,17 +45,18 @@ public class TransportCompany
     public void arrivedAtDestination(Taxi vehicle,
     Passenger passenger)
     {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt", true))) {
+        try (FileWriter writer = new FileWriter("output.txt", true)) {
             System.out.println(">>>> " + vehicle + " offloads " + passenger);
             writer.write(">>>> " + vehicle + " offloads " + passenger);
-            writer.newLine();
+            writer.write("\n");
+            
+            writer.close();
             
             List<Passenger> pAux = assignments.get(vehicle);
             if(pAux != null && pAux.size() > 0){
                 vehicle.setTargetLocation(pAux.get(0).getPickup());
             }
             
-            writer.close();
         }
         catch (IOException e) {
             System.err.println("There was a problem writing to output.txt");
@@ -141,7 +142,7 @@ public class TransportCompany
      */
     public boolean requestPickup(Passenger passenger)
     {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt", true))) {
+        try (FileWriter writer = new FileWriter("output.txt", true)) {
             Taxi taxi = scheduleVehicle(passenger.getPickup(),
                                         passenger.getCreditCard());
             List<Passenger> assignedPassengers;
@@ -164,7 +165,7 @@ public class TransportCompany
                     + passenger.getName() + " at " + passenger.getPickup());
                 writer.write("<<<< " + taxi + " go to pick up passenger " 
                     + passenger.getName() + " at " + passenger.getPickup());
-                writer.newLine();
+                writer.write("\n");
             }
             
             writer.close();
@@ -183,7 +184,7 @@ public class TransportCompany
      */
     public void arrivedAtPickup(Taxi taxi)
     {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt", true))) {
+        try (FileWriter writer = new FileWriter("output.txt", true)) {
             if(assignments.get(taxi).size() > 0){
                 Passenger pAux = assignments.get(taxi).get(0);
                 
@@ -191,7 +192,7 @@ public class TransportCompany
                 assignments.get(taxi).remove(pAux);
                 System.out.println("<<<< " + taxi + " picks up " + pAux.getName());
                 writer.write("<<<< " + taxi + " picks up " + pAux.getName());
-                writer.newLine();
+                writer.write("\n");
             }
             
             writer.close();
@@ -203,16 +204,16 @@ public class TransportCompany
     
     public void showFinalInfo()
     {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt", true))) {
+        try (FileWriter writer = new FileWriter("output.txt", true)) {
             Collections.sort( vehicles, new ComparadorTaxiInactivo());
             Taxi aux = vehicles.get(0);
             int idle = aux.getIdleCount();
             System.out.println("-->> Taxi(s) with less time not active <<--");
             writer.write("-->> Taxi(s) with less time not active <<--");
-            writer.newLine();
+            writer.write("\n");
             System.out.println(aux.showFinalInfo());
             writer.write(aux.showFinalInfo());
-            writer.newLine();
+            writer.write("\n");
             
             boolean enc = false;
             for(int i = 1; i < vehicles.size() && !enc; i++){
@@ -220,7 +221,7 @@ public class TransportCompany
                 if(aux.getIdleCount() == idle){
                     System.out.println(aux.showFinalInfo());
                     writer.write(aux.showFinalInfo());
-                    writer.newLine();
+                    writer.write("\n");
                     enc = true;
                 }
             }  
@@ -230,17 +231,17 @@ public class TransportCompany
             int value = aux.getValuation();
             System.out.println("-->> Taxi(s) with highest evaluation <<--");
             writer.write("-->> Taxi(s) with highest evaluation <<--");
-            writer.newLine();
+            writer.write("\n");
             System.out.println(aux.showFinalInfo());      
             writer.write(aux.showFinalInfo());
-            writer.newLine();
+            writer.write("\n");
             enc = false;
             for(int i = 1; i < vehicles.size() && !enc; i++){
                 aux= vehicles.get(i);
                 if(aux.getValuation() == value){
                     System.out.println(aux.showFinalInfo());
                     writer.write(aux.showFinalInfo());
-                    writer.newLine();
+                    writer.write("\n");
                     enc = true;
                 }
             } 

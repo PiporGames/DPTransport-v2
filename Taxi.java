@@ -314,14 +314,20 @@ public abstract class Taxi
      */
     public void act()
     {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt", true))) {
+        try (FileWriter writer = new FileWriter("output.txt", true)) {
             if(targetLocation == null) {
                 idleCount++;
+                
+                writer.close();
+                
             } else {
                 location = location.nextLocation(targetLocation);
-                System.out.println("@@@  Taxi: " + name + " moving to " + location); 
                 writer.write("@@@  Taxi: " + name + " moving to " + location);
-                writer.newLine();
+                System.out.println("@@@  Taxi: " + name + " moving to " + location); 
+                writer.write("\n");
+                
+                writer.close();
+                
                 if(location.equals(targetLocation)) {
                     if(passengers.size() == 0) {
                         notifyPickupArrival();
@@ -332,8 +338,7 @@ public abstract class Taxi
                     }
                 }
             }
-            
-            writer.close();
+
         }
         catch (IOException e) {
             System.err.println("There was a problem writing to output.txt");
