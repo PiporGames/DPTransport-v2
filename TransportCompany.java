@@ -48,7 +48,7 @@ public class TransportCompany
         passenger.act();
         
         List<Passenger> pAux = assignments.get(vehicle);
-        if(pAux != null){
+        if(pAux != null && pAux.size() > 0){
             vehicle.setTargetLocation(pAux.get(0).getPickup());
         }
     }
@@ -145,7 +145,7 @@ public class TransportCompany
             }
             assignedPassengers.add(passenger);
             Collections.sort(assignedPassengers, new ComparadorArrivalTime());
-            taxi.setPickupLocation(passenger.getPickup());
+            taxi.setPickupLocation(assignedPassengers.get(0).getPickup());
             assignments.put(taxi, assignedPassengers);
             result = true;
             System.out.println("<<<< " + taxi + " go to pick up passenger " 
@@ -167,6 +167,7 @@ public class TransportCompany
             
             taxi.pickup(pAux);
             assignments.get(taxi).remove(pAux);
+            System.out.println("<<<< " + taxi + " picks up " + pAux.getName());
         }
         // Iterator<Map.Entry<Taxi, List<Passenger>>> it = assignments.entrySet().iterator();
         // Map.Entry<Taxi, List<Passenger>> aux = null;

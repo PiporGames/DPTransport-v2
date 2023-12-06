@@ -213,7 +213,16 @@ public abstract class Taxi
     {
         return getClass().getName() + " " + getName() + " at " + getLocation() + " occupation " + occupation;
     }
-
+    
+    /**
+     * Return the hashCode of a Taxi
+     * @return A hashCode
+     */
+    public int hashCode()
+    {
+        return getName().hashCode();
+    }
+    
     /**
      * Returns if the taxi is free.
      * @return Whether or not this taxi is free.
@@ -248,11 +257,9 @@ public abstract class Taxi
      */
     public void pickup(Passenger passenger)
     {
-        if(passengerNumber < occupation){ 
-            passengers.add(passenger);
-            Passenger aux = (Passenger) passengers.toArray()[0];
-            targetLocation = aux.getDestination();
-        }
+        passengers.add(passenger);
+        Passenger aux = (Passenger) passengers.toArray()[0];
+        targetLocation = aux.getDestination();
     }
 
     /**
@@ -266,7 +273,7 @@ public abstract class Taxi
         passengerNumber--;
         if (passengerNumber == 0)
             targetLocation = null;
-        else{
+        else if(passengers.size() > 0){
             Passenger aux = (Passenger) passengers.toArray()[0];
             targetLocation = aux.getDestination();  
         }
