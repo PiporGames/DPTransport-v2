@@ -11,6 +11,8 @@ import org.junit.Test;
  */
 public class TaxiTest
 {
+    private TransportCompany company;
+    private TransportCompany company2;
     private Taxi taxi;
     private Taxi taxi2;
     private Passenger passenger;
@@ -31,29 +33,22 @@ public class TaxiTest
     @Before
     public void setUp()
     {
-        TransportCompany company = new TransportCompany("Compañía Taxis Cáceres");
-        TransportCompany company2 = new TransportCompany("ALSA Taxis");
+        company = new TransportCompany("Compañía Taxis Cáceres");
+        company2 = new TransportCompany("ALSA Taxis");
         // Starting position for the taxi.
         
         Location taxiLocation = new Location(0, 0);
         
         Location pickup = new Location(1, 2);
         Location destination = new Location(5, 6);
-
-        passenger = new PassengerNoVip(pickup, destination,"Kevin",
-                                        1, 12000, Reliability.LOW);
-        taxi = new TaxiShuttle(company, taxiLocation,"T1", 
-                    FuelComsumption.MEDIUM, 4);
+        passenger = new PassengerNoVip(pickup, destination,"Kevin", 1, 12000, Reliability.LOW);
+        taxi = new TaxiShuttle(company, taxiLocation,"T1", FuelComsumption.MEDIUM, 4);
      
-        Location taxiLocation2 = new Location(0, 0);
-        
-        Location pickup2 = new Location(0, 0);
+        Location taxiLocation2 = new Location(1, 1);  
+        Location pickup2 = new Location(2, 2);
         Location destination2 = new Location(4, 4);
-
-        passenger2 = new PassengerVip(pickup2, destination2,"Clara",
-                                        1, 29000, Reliability.HIGH);
-        taxi2 = new TaxiExclusive(company2, taxiLocation2,"T2",
-                    FuelComsumption.MEDIUM, 7000);
+        passenger2 = new PassengerVip(pickup2, destination2,"Clara", 1, 29000, Reliability.HIGH);
+        taxi2 = new TaxiExclusive(company2, taxiLocation2,"T2",FuelComsumption.HIGH, 7000);
         
     }
 
@@ -68,7 +63,23 @@ public class TaxiTest
         assertEquals(new Location(0,0), taxi.getLocation());
         assertEquals(null ,taxi.getTargetLocation());
         assertEquals(0,taxi.getIdleCount());
-        }
+        assertEquals(0,taxi.getValuation());
+        assertEquals(0,taxi.getPassengersTransported());
+        assertEquals(new Location(0,0),taxi.getInitialLocation());
+        assertEquals(FuelComsumption.MEDIUM.getComsumption(),taxi.getComsumption());
+        assertEquals(4,taxi.getOccupation());
+        
+        assertEquals(true, taxi2.isFree());
+        assertEquals("T2", taxi2.getName());
+        assertEquals(new Location(1,1), taxi2.getLocation());
+        assertEquals(null ,taxi2.getTargetLocation());
+        assertEquals(0,taxi2.getIdleCount());
+        assertEquals(0,taxi2.getValuation());
+        assertEquals(0,taxi2.getPassengersTransported());
+        assertEquals(new Location(1,1),taxi2.getInitialLocation());
+        assertEquals(FuelComsumption.HIGH.getComsumption(),taxi2.getComsumption());
+        assertEquals(1,taxi2.getOccupation());
+    }
 
     /**
      * Test the setters and getters of the Taxi class.
@@ -93,23 +104,38 @@ public class TaxiTest
     public void testPickup()
     {
         taxi.pickup(passenger);
-        assertEquals(false, taxi.isFree());
-        assertEquals(passenger.getDestination(), taxi.getTargetLocation());
+        taxi.setPickupLocation(passenger.getPickup());
+        assertEquals(true, taxi.isFree());
+        assertEquals(passenger.getPickup(), taxi.getTargetLocation());
  
         taxi2.pickup(passenger2);
+        taxi2.setPickupLocation(passenger2.getPickup());
         assertEquals(false, taxi2.isFree());
-        assertEquals(passenger2.getDestination(), taxi2.getTargetLocation());
+        assertEquals(passenger2.getPickup(), taxi2.getTargetLocation());
     }
 
     /**
      * Test that a taxi becomes free again after offloading
      * a passenger.
      */
+    @Test
     public void testOffload()
     {
+        taxi.setPickupLocation(passenger.getPickup());
+        taxi.pickup(passenger);
+        assertEquals(true, taxi.isFree());
+        assertEquals(passenger.getDestination(), taxi.getTargetLocation());
+        
         taxi.offloadPassenger();
         assertEquals(true, taxi.isFree());
         assertEquals(null, taxi.getTargetLocation());
+        
+        
+        
+        taxi2.setPickupLocation(passenger2.getPickup());
+        taxi2.pickup(passenger2);
+        assertEquals(false, taxi2.isFree());
+        assertEquals(passenger2.getDestination(), taxi2.getTargetLocation());
         
         taxi2.offloadPassenger();
         assertEquals(true, taxi2.isFree());
@@ -120,37 +146,102 @@ public class TaxiTest
      * Test that a taxi picks up and delivers a passenger within
      * a reasonable number of steps.
      */
+    @Test
     public void testDelivery()
     {
-        taxi.pickup(passenger);
-        for(int i = 1; i <= taxi.distanceToTheTargetLocation(); i++){
+        company.addPassenger(passenger);
+        company.addVehicle(taxi);
+        company.requestPickup(passenger);
+        assertEquals(passenger.getPickup(), taxi.getTargetLocation());
+        // Go to pickup
+        int dst = taxi.distanceToTheTargetLocation();
+        for(int i = 1; i <= dst + 1; i++){
+            taxi.act();
+        }
+        assertEquals(passenger.getDestination(), taxi.getTargetLocation());
+        // Go to passenger destination
+        int dst2 = taxi.distanceToTheTargetLocation();
+        for(int i = 1; i <= dst2 + 1; i++){
             taxi.act();
         }
         assertEquals(null, taxi.getTargetLocation());
         
-        taxi2.pickup(passenger2);
-        for(int i = 1; i <= taxi2.distanceToTheTargetLocation(); i++){
+        company2.addPassenger(passenger2);
+        company2.addVehicle(taxi2);
+        company2.requestPickup(passenger2);
+        assertEquals(passenger2.getPickup(), taxi2.getTargetLocation());
+        // Go to pickup
+        int dst3 = taxi2.distanceToTheTargetLocation();
+        for(int i = 1; i <= dst3 + 1; i++){
+            taxi2.act();
+        }
+        assertEquals(passenger2.getDestination(), taxi2.getTargetLocation());
+        // Go to passenger destination
+        int dst4 = taxi2.distanceToTheTargetLocation();
+        for(int i = 1; i <= dst4 + 1; i++){
             taxi2.act();
         }
         assertEquals(null, taxi2.getTargetLocation());
+    
     }
     
     /**
      * Test that the correct comsuption is retrieved from the taxi.
      */
+    @Test
     public void testObtainComsumption()
     {
-        taxi.pickup(passenger);
-        for(int i = 1; i <= taxi.distanceToTheTargetLocation(); i++){
+        company.addPassenger(passenger);
+        company.addVehicle(taxi);
+        company.requestPickup(passenger);
+        assertEquals(0, taxi.obtainComsumption());
+        // Go to pickup
+        int dst = taxi.distanceToTheTargetLocation();
+        for(int i = 1; i <= dst + 1; i++){
             taxi.act();
         }
-        assertEquals(null, taxi.getTargetLocation());
+        assertEquals(18, taxi.obtainComsumption());
+        // Go to passenger destination
+        int dst2 = taxi.distanceToTheTargetLocation();
+        for(int i = 1; i <= dst2 + 1; i++){
+            taxi.act();
+        }
+        assertEquals(36, taxi.obtainComsumption());
         
-        taxi2.pickup(passenger2);
-        for(int i = 1; i <= taxi2.distanceToTheTargetLocation(); i++){
+        company2.addPassenger(passenger2);
+        company2.addVehicle(taxi2);
+        company2.requestPickup(passenger2);
+        assertEquals(0, taxi2.obtainComsumption());
+        // Go to pickup
+        int dst3 = taxi2.distanceToTheTargetLocation();
+        for(int i = 1; i <= dst3 + 1; i++){
             taxi2.act();
         }
-        assertEquals(null, taxi2.getTargetLocation());
+        assertEquals(56000, taxi2.obtainComsumption());
+        // Go to passenger destination
+        int dst4 = taxi2.distanceToTheTargetLocation();
+        for(int i = 1; i <= dst4 + 1; i++){
+            taxi2.act();
+        }
+        assertEquals(84000, taxi2.obtainComsumption());
+    }
+    
+    /**
+     * Test that the correct Set of Passengers are returned.
+     */
+    @Test
+    public void testGetPassenger()
+    {
+    
+    }
+    
+    /**
+     * Test that the various types of taxis act correctly.
+     */
+    @Test
+    public void testAct()
+    {
+
     }
 }
 

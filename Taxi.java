@@ -234,7 +234,7 @@ public abstract class Taxi
      */
     public boolean isFree()
     {
-        return passengerNumber < occupation;
+        return (passengerNumber < occupation);
     }
 
     /**
