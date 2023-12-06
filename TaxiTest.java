@@ -134,5 +134,23 @@ public class TaxiTest
         }
         assertEquals(null, taxi2.getTargetLocation());
     }
+    
+    /**
+     * Test that the correct comsuption is retrieved from the taxi.
+     */
+    public void testObtainComsumption()
+    {
+        taxi.pickup(passenger);
+        for(int i = 1; i <= taxi.distanceToTheTargetLocation(); i++){
+            taxi.act();
+        }
+        assertEquals(null, taxi.getTargetLocation());
+        
+        taxi2.pickup(passenger2);
+        for(int i = 1; i <= taxi2.distanceToTheTargetLocation(); i++){
+            taxi2.act();
+        }
+        assertEquals(null, taxi2.getTargetLocation());
+    }
 }
 

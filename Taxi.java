@@ -80,6 +80,10 @@ public abstract class Taxi
         return location;
     }
     
+    /**
+     * Gets the Set of Passangers.
+     * @return Set<Passenger> of Passengers.
+     */
     protected Set<Passenger> getPassengers()
     {
         return passengers;
