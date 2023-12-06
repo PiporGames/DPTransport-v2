@@ -1,5 +1,6 @@
 import java.util.*;
 import javafx.util.Pair;
+import java.io.*;
 
 /**
  * Model the operation of a taxi company, operating different
@@ -44,12 +45,22 @@ public class TransportCompany
     public void arrivedAtDestination(Taxi vehicle,
     Passenger passenger)
     {
-        System.out.println(">>>> " + vehicle + " offloads " + passenger);
-        
-        List<Passenger> pAux = assignments.get(vehicle);
-        if(pAux != null && pAux.size() > 0){
-            vehicle.setTargetLocation(pAux.get(0).getPickup());
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
+            System.out.println(">>>> " + vehicle + " offloads " + passenger);
+            writer.write(">>>> " + vehicle + " offloads " + passenger);
+            writer.newLine();
+            
+            List<Passenger> pAux = assignments.get(vehicle);
+            if(pAux != null && pAux.size() > 0){
+                vehicle.setTargetLocation(pAux.get(0).getPickup());
+            }
+            
+            writer.close();
         }
+        catch (IOException e) {
+            System.err.println("There was a problem writing to output.txt");
+        }
+    
     }
 
     /**
@@ -130,29 +141,40 @@ public class TransportCompany
      */
     public boolean requestPickup(Passenger passenger)
     {
-        Taxi taxi = scheduleVehicle(passenger.getPickup(),
-                                    passenger.getCreditCard());
-        List<Passenger> assignedPassengers;
-        
-        boolean result = false;
-        if(taxi != null){
-            if(assignments.containsKey(taxi)){
-                assignedPassengers = assignments.remove(taxi);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
+            Taxi taxi = scheduleVehicle(passenger.getPickup(),
+                                        passenger.getCreditCard());
+            List<Passenger> assignedPassengers;
+            
+            boolean result = false;
+            if(taxi != null){
+                if(assignments.containsKey(taxi)){
+                    assignedPassengers = assignments.remove(taxi);
+                }
+                else{
+                    assignedPassengers = new ArrayList<Passenger>();
+                }
+                passenger.setTaxiName(taxi.getName());
+                assignedPassengers.add(passenger);
+                Collections.sort(assignedPassengers, new ComparadorArrivalTime());
+                taxi.setPickupLocation(assignedPassengers.get(0).getPickup());
+                assignments.put(taxi, assignedPassengers);
+                result = true;
+                System.out.println("<<<< " + taxi + " go to pick up passenger " 
+                    + passenger.getName() + " at " + passenger.getPickup());
+                writer.write("<<<< " + taxi + " go to pick up passenger " 
+                    + passenger.getName() + " at " + passenger.getPickup());
+                writer.newLine();
             }
-            else{
-                assignedPassengers = new ArrayList<Passenger>();
-            }
-            passenger.setTaxiName(taxi.getName());
-            assignedPassengers.add(passenger);
-            Collections.sort(assignedPassengers, new ComparadorArrivalTime());
-            taxi.setPickupLocation(assignedPassengers.get(0).getPickup());
-            assignments.put(taxi, assignedPassengers);
-            result = true;
-            System.out.println("<<<< " + taxi + " go to pick up passenger " 
-                + passenger.getName() + " at " + passenger.getPickup());
+            
+            writer.close();
+            
+            return result;
         }
-
-        return result;
+        catch (IOException e) {
+            System.err.println("There was a problem writing to output.txt");
+            return false;
+        }
     }
 
     /**
@@ -161,64 +183,73 @@ public class TransportCompany
      */
     public void arrivedAtPickup(Taxi taxi)
     {
-
-        if(assignments.get(taxi).size() > 0){
-            Passenger pAux = assignments.get(taxi).get(0);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
+            if(assignments.get(taxi).size() > 0){
+                Passenger pAux = assignments.get(taxi).get(0);
+                
+                taxi.pickup(pAux);
+                assignments.get(taxi).remove(pAux);
+                System.out.println("<<<< " + taxi + " picks up " + pAux.getName());
+                writer.write("<<<< " + taxi + " picks up " + pAux.getName());
+                writer.newLine();
+            }
             
-            taxi.pickup(pAux);
-            assignments.get(taxi).remove(pAux);
-            System.out.println("<<<< " + taxi + " picks up " + pAux.getName());
+            writer.close();
         }
-        // Iterator<Map.Entry<Taxi, List<Passenger>>> it = assignments.entrySet().iterator();
-        // Map.Entry<Taxi, List<Passenger>> aux = null;
-    
-        // boolean enc = false;
-        // while(it.hasNext() && !enc){
-            
-            // aux = it.next();
-            
-            // Taxi tAux = aux.getKey();
-            // if(tAux.equals(taxi)) {
-                // enc = true;
-                // Passenger passenger = aux.getValue().get(0);
-                // it.remove();
-                // tAux.pickup(passenger);
-                // passenger.setTaxiName(tAux.getName());
-                // System.out.println("<<<< " + taxi + " picks up " + passenger.getName());
-            // }       
-        // }
+        catch (IOException e) {
+            System.err.println("There was a problem writing to output.txt");
+        }
     }
     
     public void showFinalInfo()
     {
-        Collections.sort( vehicles, new ComparadorTaxiInactivo());
-        Taxi aux = vehicles.get(0);
-        int idle = aux.getIdleCount();
-        System.out.println("-->> Taxi(s) with less time not active <<--");
-        System.out.println(aux.showFinalInfo());
-        
-        boolean enc = false;
-        for(int i = 1; i < vehicles.size() && !enc; i++){
-            aux= vehicles.get(i);
-            if(aux.getIdleCount() == idle){
-                System.out.println(aux.showFinalInfo());
-                enc = true;
-            }
-        }  
-        
-        Collections.sort( vehicles, new ComparadorTaxiValuation());
-        aux = vehicles.get(0);
-        int value = aux.getValuation();
-        System.out.println("-->> Taxi(s) with highest evaluation <<--");
-        System.out.println(aux.showFinalInfo());      
-        enc = false;
-        for(int i = 1; i < vehicles.size() && !enc; i++){
-            aux= vehicles.get(i);
-            if(aux.getValuation() == value){
-                System.out.println(aux.showFinalInfo());
-                enc = true;
-            }
-        }           
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
+            Collections.sort( vehicles, new ComparadorTaxiInactivo());
+            Taxi aux = vehicles.get(0);
+            int idle = aux.getIdleCount();
+            System.out.println("-->> Taxi(s) with less time not active <<--");
+            writer.write("-->> Taxi(s) with less time not active <<--");
+            writer.newLine();
+            System.out.println(aux.showFinalInfo());
+            writer.write(aux.showFinalInfo());
+            writer.newLine();
+            
+            boolean enc = false;
+            for(int i = 1; i < vehicles.size() && !enc; i++){
+                aux= vehicles.get(i);
+                if(aux.getIdleCount() == idle){
+                    System.out.println(aux.showFinalInfo());
+                    writer.write(aux.showFinalInfo());
+                    writer.newLine();
+                    enc = true;
+                }
+            }  
+            
+            Collections.sort( vehicles, new ComparadorTaxiValuation());
+            aux = vehicles.get(0);
+            int value = aux.getValuation();
+            System.out.println("-->> Taxi(s) with highest evaluation <<--");
+            writer.write("-->> Taxi(s) with highest evaluation <<--");
+            writer.newLine();
+            System.out.println(aux.showFinalInfo());      
+            writer.write(aux.showFinalInfo());
+            writer.newLine();
+            enc = false;
+            for(int i = 1; i < vehicles.size() && !enc; i++){
+                aux= vehicles.get(i);
+                if(aux.getValuation() == value){
+                    System.out.println(aux.showFinalInfo());
+                    writer.write(aux.showFinalInfo());
+                    writer.newLine();
+                    enc = true;
+                }
+            } 
+            
+            writer.close();
+        }
+        catch (IOException e) {
+            System.err.println("There was a problem writing to output.txt");
+        }
     }
 
 }

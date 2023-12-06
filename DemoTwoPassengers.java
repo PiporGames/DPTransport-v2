@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 /**
  * Provide a simple demonstration of running a stage-one
@@ -107,55 +108,102 @@ public class DemoTwoPassengers
      * Initial info is showed with the information about taxis and passengers
      */
     private void showInicialInfo() {
-        List<Taxi> vehicles = company.getVehicles();
-        List<Passenger> passengers = company.getPassengers();
-        Collections.sort(vehicles, new ComparadorTaxiNombre());
-        Collections.sort(passengers, new ComparadorNombrePassenger());
-        System.out.println("--->> Simulation of the company: "+company.getName()+" <<---");
-        System.out.println("-->> Taxis of the company <<--");
-
-        for(Taxi  taxi : vehicles) {
-            System.out.println(taxi.showInitialInfo());
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))){
+            List<Taxi> vehicles = company.getVehicles();
+            List<Passenger> passengers = company.getPassengers();
+            Collections.sort(vehicles, new ComparadorTaxiNombre());
+            Collections.sort(passengers, new ComparadorNombrePassenger());
+            System.out.println("--->> Simulation of the company: "+company.getName()+" <<---");
+            writer.write("--->> Simulation of the company: "+company.getName()+" <<---");
+            writer.newLine();
+            System.out.println("-->> Taxis of the company <<--");
+            writer.write("-->> Taxis of the company <<--");
+            writer.newLine();
+    
+            for(Taxi  taxi : vehicles) {
+                System.out.println(taxi);
+                writer.write(taxi.toString());
+                writer.newLine();
+            }
+            System.out.println("-->> Passengers requesting taxi <<--");
+            writer.write("-->> Passengers requesting taxi <<--");
+            writer.newLine();
+            Collections.sort(passengers, new ComparadorArrivalTime());
+    
+            for(Passenger passenger : passengers) {
+                System.out.println(passenger);
+                writer.write(passenger.toString());
+                writer.newLine();
+            }
+            System.out.println("");
+            writer.newLine();
+            System.out.println("-->> ---------------- <<--");
+            writer.write("-->> ---------------- <<--");
+            writer.newLine();
+            System.out.println("-->> Simulation start <<--");
+            writer.write("-->> Simulation start <<--");
+            writer.newLine();
+            System.out.println("-->> ---------------- <<--");
+            writer.write("-->> ---------------- <<--");
+            writer.newLine();
+            System.out.println("");
+            writer.newLine();
+            
+            writer.close();
         }
-        System.out.println("-->> Passengers requesting taxi <<--");
-        Collections.sort(passengers, new ComparadorArrivalTime());
-
-        for(Passenger passenger : passengers) {
-            System.out.println(passenger);
+        catch (IOException e) {
+            System.err.println("There was a problem writing to output.txt");
         }
-        System.out.println("");
-        System.out.println("-->> ---------------- <<--");
-        System.out.println("-->> Simulation start <<--");
-        System.out.println("-->> ---------------- <<--");
-        System.out.println("");        
     }
 
     /**
      * Final info is showed with the information about taxis and passengers
      */
     private void showFinalInfo() {
-        List<Taxi> vehicles = company.getVehicles();
-        List<Passenger> passengers = company.getPassengers();
-        Collections.sort(vehicles, new ComparadorTaxiPasajeros());
-        Collections.sort(passengers, new ComparadorNombrePassenger());
-
-        System.out.println("");
-        System.out.println("-->> ----------------- <<--");
-        System.out.println("-->> End of simulation <<--");        
-        System.out.println("-->> ----------------- <<--");
-        System.out.println("");
-
-        System.out.println("-->> Taxis final information <<--");
-
-        for(Taxi  taxi : vehicles) {
-            System.out.println(((Taxi)taxi).showFinalInfo());
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
+            List<Taxi> vehicles = company.getVehicles();
+            List<Passenger> passengers = company.getPassengers();
+            Collections.sort(vehicles, new ComparadorTaxiPasajeros());
+            Collections.sort(passengers, new ComparadorNombrePassenger());
+    
+            System.out.println("");
+            writer.newLine();
+            System.out.println("-->> ----------------- <<--");
+            writer.write("-->> ----------------- <<--");
+            writer.newLine();
+            System.out.println("-->> End of simulation <<--"); 
+            writer.write("-->> End of simulation <<--");
+            writer.newLine();
+            System.out.println("-->> ----------------- <<--");
+            writer.write("-->> ----------------- <<--");
+            writer.newLine();
+            System.out.println("");
+            writer.newLine();
+    
+            System.out.println("-->> Taxis final information <<--");
+            writer.write("-->> Taxis final information <<--");
+            writer.newLine();
+    
+            for(Taxi  taxi : vehicles) {
+                System.out.println(((Taxi)taxi).showFinalInfo());
+                writer.write(((Taxi)taxi).showFinalInfo());
+                writer.newLine();
+            }
+            System.out.println("-->> Passengers final information <<--");
+            writer.write("-->> Passengers final information <<--");
+            writer.newLine();
+            for(Passenger passenger : passengers) {
+                System.out.println(passenger.showFinalInfo());
+                writer.write(passenger.showFinalInfo());
+                writer.newLine();
+            }
+            //Muestra los Taxis con menos turnos inactivos y Taxis con más valoración
+            company.showFinalInfo();
+            
+            writer.close();
         }
-        System.out.println("-->> Passengers final information <<--");
-        for(Passenger passenger : passengers) {
-            System.out.println(passenger.showFinalInfo());
+        catch(IOException e) {
+            System.err.println("There was a problem writing to output.txt");
         }
-        //Muestra los Taxis con menos turnos inactivos y Taxis con más valoración
-        company.showFinalInfo();
-
     }
 }
