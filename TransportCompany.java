@@ -102,8 +102,6 @@ public class TransportCompany
         comp.setLocationDestination(location);
         Collections.sort(vehicles, comp);
         
-        ComparadorArrivalTime compArrival = new ComparadorArrivalTime();
-        //Collections.sort(passengers, compArrival);
         
         Iterator <Taxi> it = vehicles.iterator();
        
@@ -111,7 +109,7 @@ public class TransportCompany
             vh = it.next();
 
             if(vh.isFree()){
-                if(money > 20000){
+                if(money > 20000){  
                     if(vh.getOccupation() == 1){
                         enc = true;
                     }
