@@ -39,7 +39,7 @@ public class TaxiExclusive extends Taxi implements SerPopularEnRedes
     @Override
     public int obtainComsumption()
     {
-        return (weight * getComsumption() 
+        return (weight/2 * getComsumption() 
                 * getLocation().distance(getInitialLocation()));        
     }
     

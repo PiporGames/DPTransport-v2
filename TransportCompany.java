@@ -45,7 +45,6 @@ public class TransportCompany
     Passenger passenger)
     {
         System.out.println(">>>> " + vehicle + " offloads " + passenger);
-        passenger.act();
         
         List<Passenger> pAux = assignments.get(vehicle);
         if(pAux != null && pAux.size() > 0){
@@ -143,6 +142,7 @@ public class TransportCompany
             else{
                 assignedPassengers = new ArrayList<Passenger>();
             }
+            passenger.setTaxiName(taxi.getName());
             assignedPassengers.add(passenger);
             Collections.sort(assignedPassengers, new ComparadorArrivalTime());
             taxi.setPickupLocation(assignedPassengers.get(0).getPickup());

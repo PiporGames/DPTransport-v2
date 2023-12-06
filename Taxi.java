@@ -246,8 +246,8 @@ public abstract class Taxi
      */
     public void notifyPassengerArrival(Passenger passenger)
     {
-        offloadPassenger();
         company.arrivedAtDestination(this, passenger);
+        offloadPassenger();
     }
 
     /**
@@ -338,7 +338,7 @@ public abstract class Taxi
      */
     public String showFinalInfo()
     {
-        String info = getClass().getName() + " " + name + " at " + location + " - " +
+        String info = getClass().getName() + " " + name + " at " + location + " occupation " + occupation + " - " +
                     "passengers transported: " + passengersTransported + " - " +
                     "non active for: " + idleCount + " times - valuation: " + valuation + " - consumption: " + obtainComsumption();
         return info;
