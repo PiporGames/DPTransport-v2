@@ -9,7 +9,9 @@ Proyecto hecho por:
     - David de Miguel Palomino.
     - José Manuel de Torres Domínguez.
 
-Para ejecutar el programa (main()), ejecutar el main que hay en la clase TaxiDemo.
+Para ejecutar el programa (main()), ejecutar el main que hay en la clase TaxiDemoFinal.
 
 Nuestro proyecto cuenta con los siguientes extras:
+
+    - Todas las extensiones, de todas las calidades.
     

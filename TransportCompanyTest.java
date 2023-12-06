@@ -16,6 +16,7 @@ public class TransportCompanyTest
     
     Passenger p1;
     Passenger p2;
+    Passenger p3;
     
     Taxi taxi1;
     Taxi taxi2;
@@ -35,20 +36,18 @@ public class TransportCompanyTest
         company = new TransportCompany("Compañía Taxis Cáceres");
         company2 = new TransportCompany("ALSA Taxis"); 
         Location pickup1, pickup2, destination1, destination2;
-        int arrivalTime, creditCard;
-        Reliability reliable;
         
         pickup1 = new Location(0,0);
         pickup2 = new Location(6,4);
         destination1 = new Location(3,2);
         destination2 = new Location(4,1);
         
-        Passenger p1 = new PassengerVip(pickup1, destination1, "Javier", 1, 35000, Reliability.HIGH);
-        Passenger p2 = new PassengerNoVip(pickup2, destination2, "Juan", 1, 13000, Reliability.LOW);
+        p1 = new PassengerVip(pickup1, destination1, "Javier", 1, 35000, Reliability.HIGH);
+        p2 = new PassengerNoVip(pickup2, destination2, "Juan", 2, 13000, Reliability.LOW);
+        p3 = new PassengerNoVip(pickup2, destination2, "Pepe", 3, 13000, Reliability.LOW); 
         
-        Taxi taxi1 = new TaxiShuttle(company, new Location(0, 0),"T1", FuelComsumption.MEDIUM, 4);
-        Taxi taxi2 = new TaxiExclusive(company2, new Location(0, 0),"T2",
-                    FuelComsumption.MEDIUM, 7000);
+        taxi1 = new TaxiExclusive(company2, new Location(0, 0),"T1",FuelComsumption.MEDIUM, 7000);
+        taxi2 = new TaxiShuttle(company, new Location(0, 0),"T2", FuelComsumption.MEDIUM, 4);
     }
     
     /**
@@ -58,7 +57,7 @@ public class TransportCompanyTest
     public void testCreation()
     {
         assertEquals("Compañía Taxis Cáceres", company.getName());
-        assertEquals("ALSA Taxis", company.getName());
+        assertEquals("ALSA Taxis", company2.getName());
     }
     
     /**
@@ -67,9 +66,15 @@ public class TransportCompanyTest
     @Test
     public void testRequestPickup()
     {
-        assertEquals(false, company.requestPickup(p2));
         assertEquals(false, company.requestPickup(p1));
+        company.addPassenger(p1);
+        company.addVehicle(taxi1);
         assertEquals(true, company.requestPickup(p1));
+        
+        assertEquals(false, company2.requestPickup(p2));
+        company2.addPassenger(p2);
+        company2.addVehicle(taxi2);
+        assertEquals(true, company.requestPickup(p2));
     }
     
     /**
@@ -77,10 +82,20 @@ public class TransportCompanyTest
      */    
     @Test
     public void testArrivedAtPickup()
-    {        
-        assertEquals(false, company.requestPickup(p2));
-        assertEquals(false, company.requestPickup(p1));
-        assertEquals(true, company.requestPickup(p1));
+    {   
+        company.addPassenger(p1);
+        company.addVehicle(taxi1);
+        company.requestPickup(p1);
+        taxi1.setLocation(p1.getPickup());
+        company.arrivedAtPickup(taxi1);
+        assertEquals(p1.getDestination(), taxi1.getTargetLocation());
+
+        company2.addPassenger(p2);
+        company2.addVehicle(taxi2);
+        company2.requestPickup(p2);
+        taxi2.setLocation(p2.getPickup());
+        company2.arrivedAtPickup(taxi2);
+        assertEquals(p2.getDestination(), taxi2.getTargetLocation());
     }
     
     /**
@@ -89,16 +104,26 @@ public class TransportCompanyTest
     @Test
     public void testArrivedAtDestination()
     {
-        taxi1.pickup(p1);
-        for(int i = 1; i <= taxi1.distanceToTheTargetLocation(); i++){
-            taxi1.act();
-        }
-        assertEquals(p1.getPickup(), taxi1.getTargetLocation());
-        
-        taxi2.pickup(p2);
-        for(int i = 1; i <= taxi2.distanceToTheTargetLocation(); i++){
-            taxi2.act();
-        }        
-        assertEquals(p2.getPickup(), taxi2.getTargetLocation());
+        company.addPassenger(p1);
+        company.addPassenger(p2);        
+        company.addVehicle(taxi1);
+        company.requestPickup(p1);
+        company.requestPickup(p2);
+        taxi1.setLocation(p1.getPickup());
+        company.arrivedAtPickup(taxi1);
+        taxi1.setLocation(p1.getDestination());
+        company.arrivedAtDestination(taxi1, p1);
+        assertEquals(p2.getPickup(), taxi1.getTargetLocation());
+
+        company2.addPassenger(p2);
+        company2.addPassenger(p3);
+        company2.addVehicle(taxi2);
+        company2.requestPickup(p2);
+        company2.requestPickup(p3);
+        taxi2.setLocation(p2.getPickup());
+        company2.arrivedAtPickup(taxi2);
+        taxi2.setLocation(p2.getDestination());
+        company2.arrivedAtDestination(taxi2, p2);
+        assertEquals(p3.getPickup(), taxi2.getTargetLocation());
     }
 }
