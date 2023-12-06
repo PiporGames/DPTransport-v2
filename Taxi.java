@@ -308,7 +308,7 @@ public abstract class Taxi
             location = location.nextLocation(targetLocation);
             System.out.println("@@@  Taxi: " + name + " moving to " + location);    
             if(location.equals(targetLocation)) {
-                if(passengerNumber > passengers.size()) {
+                if(passengers.size() == 0) {
                     notifyPickupArrival();
                 } else {
                     notifyPassengerArrival((Passenger) 

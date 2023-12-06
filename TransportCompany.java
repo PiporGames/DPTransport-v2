@@ -162,11 +162,12 @@ public class TransportCompany
     public void arrivedAtPickup(Taxi taxi)
     {
 
-        
-        Passenger pAux = assignments.get(taxi).get(0);
-        
-        taxi.pickup(pAux);
-        assignments.get(taxi).remove(pAux);
+        if(assignments.get(taxi).size() > 0){
+            Passenger pAux = assignments.get(taxi).get(0);
+            
+            taxi.pickup(pAux);
+            assignments.get(taxi).remove(pAux);
+        }
         // Iterator<Map.Entry<Taxi, List<Passenger>>> it = assignments.entrySet().iterator();
         // Map.Entry<Taxi, List<Passenger>> aux = null;
     
