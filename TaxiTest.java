@@ -40,7 +40,8 @@ public class TaxiTest
         Location pickup = new Location(1, 2);
         Location destination = new Location(5, 6);
 
-        passenger = new PassengerNoVip(pickup, destination,"Kevin");
+        passenger = new PassengerNoVip(pickup, destination,"Kevin",
+                                        1, 12000, Reliability.LOW);
         taxi = new TaxiShuttle(company, taxiLocation,"T1", 
                     FuelComsumption.MEDIUM, 4);
      
@@ -49,7 +50,8 @@ public class TaxiTest
         Location pickup2 = new Location(0, 0);
         Location destination2 = new Location(4, 4);
 
-        passenger2 = new PassengerVip(pickup2, destination2,"Clara");
+        passenger2 = new PassengerVip(pickup2, destination2,"Clara",
+                                        1, 29000, Reliability.HIGH);
         taxi2 = new TaxiExclusive(company2, taxiLocation2,"T2",
                     FuelComsumption.MEDIUM, 7000);
         
@@ -64,7 +66,7 @@ public class TaxiTest
         assertEquals(true, taxi.isFree());
         assertEquals("T1", taxi.getName());
         assertEquals(new Location(0,0), taxi.getLocation());
-        assertEquals(new Location(5,6),taxi.getTargetLocation());
+        assertEquals(null ,taxi.getTargetLocation());
         assertEquals(0,taxi.getIdleCount());
         }
 

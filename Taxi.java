@@ -77,6 +77,11 @@ public abstract class Taxi
         return location;
     }
     
+    protected Set<Passenger> getPassengers()
+    {
+        return passengers;
+    }
+    
     /**
      * Gets the occupation.
      * @return Where this taxi is currently located.
