@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 /**
  * Model the common elements of taxis and shuttles.
@@ -313,20 +314,29 @@ public abstract class Taxi
      */
     public void act()
     {
-        if(targetLocation == null) {
-            idleCount++;
-        } else {
-            location = location.nextLocation(targetLocation);
-            System.out.println("@@@  Taxi: " + name + " moving to " + location);    
-            if(location.equals(targetLocation)) {
-                if(passengers.size() == 0) {
-                    notifyPickupArrival();
-                } else {
-                    notifyPassengerArrival((Passenger) 
-                                            passengers.toArray()[0]);
-                    incrementPassengersTransported();
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
+            if(targetLocation == null) {
+                idleCount++;
+            } else {
+                location = location.nextLocation(targetLocation);
+                System.out.println("@@@  Taxi: " + name + " moving to " + location); 
+                writer.write("@@@  Taxi: " + name + " moving to " + location);
+                writer.newLine();
+                if(location.equals(targetLocation)) {
+                    if(passengers.size() == 0) {
+                        notifyPickupArrival();
+                    } else {
+                        notifyPassengerArrival((Passenger) 
+                                                passengers.toArray()[0]);
+                        incrementPassengersTransported();
+                    }
                 }
             }
+            
+            writer.close();
+        }
+        catch (IOException e) {
+            System.err.println("There was a problem writing to output.txt");
         }
     }
     
