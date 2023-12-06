@@ -18,4 +18,24 @@ public enum Reliability
     public int getValor(){
         return(this.Value);
     }
+    
+        public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<reliable: ");
+        switch (Value){
+            case 10:
+                sb.append("High");
+                break;
+            case 5:
+                sb.append("Low");
+                break;
+            default:
+                sb.append("UNKNOWN");
+                break;
+        }
+        
+        sb.append(" (value: " + Value + ")>");
+        return sb.toString();
+    }
+
 }

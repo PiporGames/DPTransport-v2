@@ -48,7 +48,7 @@ public class TransportCompany
         passenger.act();
         
         List<Passenger> pAux = assignments.get(vehicle);
-        if(pAux.size() != 0){
+        if(pAux != null){
             vehicle.setTargetLocation(pAux.get(0).getPickup());
         }
     }
@@ -103,7 +103,7 @@ public class TransportCompany
         Collections.sort(vehicles, comp);
         
         ComparadorArrivalTime compArrival = new ComparadorArrivalTime();
-        Collections.sort(passengers, compArrival);
+        //Collections.sort(passengers, compArrival);
         
         Iterator <Taxi> it = vehicles.iterator();
        

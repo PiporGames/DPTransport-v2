@@ -207,11 +207,11 @@ public abstract class Taxi
      */
     public String toString()
     {
-        return getClass().getName() + " " + getName() + " at " + getLocation();
+        return getClass().getName() + " " + getName() + " at " + getLocation() + " occupation " + occupation;
     }
 
     /**
-     * Is the taxi free?
+     * Returns if the taxi is free.
      * @return Whether or not this taxi is free.
      */
     public boolean isFree()
@@ -301,8 +301,7 @@ public abstract class Taxi
             idleCount++;
         } else {
             location = location.nextLocation(targetLocation);
-            System.out.println("@@@  Taxi: " + name + " moving to: " 
-                + location.getX() + " - " + location.getY());    
+            System.out.println("@@@  Taxi: " + name + " moving to " + location);    
             if(location.equals(targetLocation)) {
                 if(passengers.isEmpty()) {
                     notifyPickupArrival();
@@ -332,6 +331,15 @@ public abstract class Taxi
                     "non active for: " + idleCount + " times";
         return info;
 
+    }
+    
+    /**
+     * Return initial details of the taxi, such as where it is.
+     * @return A string representation of the taxi.
+     */
+    public String showInitialInfo()
+    {
+      return getClass().getName() + " " + getName() + " at " + getLocation() + " occupation " + occupation + " " + fuelComsumption;
     }
 
 }
