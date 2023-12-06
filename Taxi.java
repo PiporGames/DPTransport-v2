@@ -314,7 +314,7 @@ public abstract class Taxi
      */
     public void act()
     {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt", true))) {
             if(targetLocation == null) {
                 idleCount++;
             } else {

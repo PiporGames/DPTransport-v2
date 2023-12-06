@@ -45,7 +45,7 @@ public class TransportCompany
     public void arrivedAtDestination(Taxi vehicle,
     Passenger passenger)
     {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt", true))) {
             System.out.println(">>>> " + vehicle + " offloads " + passenger);
             writer.write(">>>> " + vehicle + " offloads " + passenger);
             writer.newLine();
@@ -141,7 +141,7 @@ public class TransportCompany
      */
     public boolean requestPickup(Passenger passenger)
     {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt", true))) {
             Taxi taxi = scheduleVehicle(passenger.getPickup(),
                                         passenger.getCreditCard());
             List<Passenger> assignedPassengers;
@@ -183,7 +183,7 @@ public class TransportCompany
      */
     public void arrivedAtPickup(Taxi taxi)
     {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt", true))) {
             if(assignments.get(taxi).size() > 0){
                 Passenger pAux = assignments.get(taxi).get(0);
                 
@@ -203,7 +203,7 @@ public class TransportCompany
     
     public void showFinalInfo()
     {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt", true))) {
             Collections.sort( vehicles, new ComparadorTaxiInactivo());
             Taxi aux = vehicles.get(0);
             int idle = aux.getIdleCount();
