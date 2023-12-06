@@ -115,7 +115,8 @@ public class TransportCompany
                     }
                 }
                 else {
-                    enc = true;
+                    if (vh.getOccupation() > 1 && vh.getOccupation() < 5)
+                        enc = true;
                 }
             }
         }

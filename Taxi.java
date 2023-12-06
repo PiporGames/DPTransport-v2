@@ -30,6 +30,8 @@ public abstract class Taxi
     private int valuation;
     // Represents the number of people that fits in the taxi
     private int occupation;
+    // The amount of people assigned to the taxi
+    private int passengerNumber;
 
     /**
      * Constructor of class Vehicle
@@ -58,6 +60,7 @@ public abstract class Taxi
         fuelComsumption = comsumption;
         valuation = 0;
         this.occupation = occupation;
+        passengerNumber = 0;
     }
 
     /**
@@ -166,6 +169,7 @@ public abstract class Taxi
     public void setPickupLocation(Location location)
     {
         setTargetLocation(location);
+        passengerNumber++;
     }
     
     /**
@@ -216,7 +220,7 @@ public abstract class Taxi
      */
     public boolean isFree()
     {
-        return passengers.size() < occupation;
+        return passengerNumber < occupation;
     }
 
     /**
@@ -244,7 +248,7 @@ public abstract class Taxi
      */
     public void pickup(Passenger passenger)
     {
-        if(passengers.size() < occupation){ 
+        if(passengerNumber < occupation){ 
             passengers.add(passenger);
             Passenger aux = (Passenger) passengers.toArray()[0];
             targetLocation = aux.getDestination();
@@ -265,6 +269,7 @@ public abstract class Taxi
             Passenger aux = (Passenger) passengers.toArray()[0];
             targetLocation = aux.getDestination();  
         }
+        passengerNumber--;
     }
 
     /**
