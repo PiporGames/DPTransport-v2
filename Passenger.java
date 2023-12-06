@@ -147,7 +147,7 @@ public abstract class Passenger
      */
     public String showFinalInfo()
     {
-        return "Passenger " + getName() + " in " + getDestination() +  " transported by: " + getTaxiName();
+        return "Passenger " + getName() + " in " + getDestination() +  " transported by: " + getTaxiName() + " with " + creditCard + " money in the credit card";
     }
 
 }

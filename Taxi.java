@@ -326,9 +326,9 @@ public abstract class Taxi
      */
     public String showFinalInfo()
     {
-        String info = "Taxi " + name + " at " + location + " - " +
+        String info = getClass().getName() + " " + name + " at " + location + " - " +
                     "passengers transported: " + passengersTransported + " - " +
-                    "non active for: " + idleCount + " times";
+                    "non active for: " + idleCount + " times - valuation: " + valuation + " - consumption: " + obtainComsumption();
         return info;
 
     }

@@ -42,4 +42,10 @@ public class TaxiExclusive extends Taxi implements SerPopularEnRedes
         return (weight * getComsumption() 
                 * getLocation().distance(getInitialLocation()));        
     }
+    
+    @Override
+    public String showFinalInfo()
+    {
+        return(super.showFinalInfo() + " - popularity: " + popularity);
+    }
 }
