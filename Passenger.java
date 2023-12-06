@@ -92,7 +92,7 @@ public abstract class Passenger
      */
     public String toString()
     {
-        return "Passenger "+getName()+" travelling from " + pickup + " to " + destination + " arrival time: " + arrivalTime + " money in the credit card: " + creditCard + " " + reliable;
+        return getClass().getName() + " " + getName()+" travelling from " + pickup + " to " + destination + " arrival time: " + arrivalTime + " money in the credit card: " + creditCard + " " + reliable;
     }
     
     /**
@@ -147,7 +147,7 @@ public abstract class Passenger
      */
     public String showFinalInfo()
     {
-        return "Passenger " + getName() + " in " + getDestination() +  " transported by: " + getTaxiName() + " with " + creditCard + " money in the credit card";
+        return getClass().getName() + " " + getName() + " in " + getDestination() +  " transported by: " + getTaxiName() + " with " + creditCard + " money in the credit card";
     }
 
 }

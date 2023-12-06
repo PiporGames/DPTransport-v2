@@ -188,13 +188,14 @@ public class TransportCompany
         Collections.sort( vehicles, new ComparadorTaxiInactivo());
         Taxi aux = vehicles.get(0);
         int idle = aux.getIdleCount();
-        System.out.println(aux);
+        System.out.println("-->> Taxi(s) with less time not active <<--");
+        System.out.println(aux.showFinalInfo());
         
         boolean enc = false;
         for(int i = 1; i < vehicles.size() && !enc; i++){
             aux= vehicles.get(i);
             if(aux.getIdleCount() == idle){
-                System.out.println(aux);
+                System.out.println(aux.showFinalInfo());
                 enc = true;
             }
         }  
@@ -202,12 +203,13 @@ public class TransportCompany
         Collections.sort( vehicles, new ComparadorTaxiValuation());
         aux = vehicles.get(0);
         int value = aux.getValuation();
-        System.out.println(aux);        
+        System.out.println("-->> Taxi(s) with highest evaluation <<--");
+        System.out.println(aux.showFinalInfo());      
         enc = false;
         for(int i = 1; i < vehicles.size() && !enc; i++){
             aux= vehicles.get(i);
             if(aux.getValuation() == value){
-                System.out.println(aux);
+                System.out.println(aux.showFinalInfo());
                 enc = true;
             }
         }           
