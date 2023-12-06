@@ -132,20 +132,23 @@ public class TransportCompany
      */
     public boolean requestPickup(Passenger passenger)
     {
-        Taxi taxi = scheduleVehicle(passenger.getPickup());
+        Taxi taxi = scheduleVehicle(passenger.getPickup(),
+                                    passenger.getCreditCard());
+        List<Passenger> assignedPassengers;
         
         boolean result = false;
         if(taxi != null){
             if(assignments.containsKey(taxi)){
-                List<Passenger> assignedPassengers = assignments.remove(taxi);
+                assignedPassengers = assignments.remove(taxi);
             }
             else{
-                List<Passenger> passengers;
-                passengers.add(0, passenger);
-                assignments.put(taxi,passengers);
+                assignedPassengers = new ArrayList<Passenger>();
             }
+            assignedPassengers.add(passenger);
+            ComparadorArrivalTime compArrival = new ComparadorArrivalTime();
+            Collections.sort(assignedPassengers, compArrival);
             taxi.setPickupLocation(passenger.getPickup());
-            assignments.put(taxi, );
+            assignments.put(taxi, assignedPassengers);
             result = true;
             System.out.println("<<<< " + taxi + " go to pick up passenger " 
                 + passenger.getName() + " at " + passenger.getPickup());
@@ -160,7 +163,7 @@ public class TransportCompany
      */
     public void arrivedAtPickup(Taxi taxi)
     {
-        //Iterator LinkedHashMap<Taxi, Passenger> it = assignments.iterator();
+     
         Iterator<Map.Entry<Taxi, List<Passenger>>> it = assignments.entrySet().iterator();
         Map.Entry<Taxi, List<Passenger>> aux = null;
     
