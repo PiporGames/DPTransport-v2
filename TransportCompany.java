@@ -145,8 +145,7 @@ public class TransportCompany
                 assignedPassengers = new ArrayList<Passenger>();
             }
             assignedPassengers.add(passenger);
-            ComparadorArrivalTime compArrival = new ComparadorArrivalTime();
-            Collections.sort(assignedPassengers, compArrival);
+            Collections.sort(assignedPassengers, new ComparadorArrivalTime());
             taxi.setPickupLocation(passenger.getPickup());
             assignments.put(taxi, assignedPassengers);
             result = true;
@@ -182,6 +181,36 @@ public class TransportCompany
                 System.out.println("<<<< " + taxi + " picks up " + passenger.getName());
             }       
         }
+    }
+    
+    public void showFinalInfo()
+    {
+        Collections.sort( vehicles, new ComparadorTaxiInactivo());
+        Taxi aux = vehicles.get(0);
+        int idle = aux.getIdleCount();
+        System.out.println(aux);
+        
+        boolean enc = false;
+        for(int i = 1; i < vehicles.size() && !enc; i++){
+            aux= vehicles.get(i);
+            if(aux.getIdleCount() == idle){
+                System.out.println(aux);
+                enc = true;
+            }
+        }  
+        
+        Collections.sort( vehicles, new ComparadorTaxiValuation());
+        aux = vehicles.get(0);
+        int value = aux.getValuation();
+        System.out.println(aux);        
+        enc = false;
+        for(int i = 1; i < vehicles.size() && !enc; i++){
+            aux= vehicles.get(i);
+            if(aux.getValuation() == value){
+                System.out.println(aux);
+                enc = true;
+            }
+        }           
     }
 
 }

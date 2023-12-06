@@ -84,12 +84,21 @@ public abstract class Taxi
     
     /**
      * Gets the occupation.
-     * @return Where this taxi is currently located.
+     * @return The occupation of the taxi.
      */
     public int getOccupation()
     {
         return occupation;        
     }
+    
+    /**
+     * Gets the valuation.
+     * @return The valuation of the taxi.
+     */
+    public int getValuation()
+    {
+        return valuation;        
+    }   
     
     /**
      * Get the initial location.

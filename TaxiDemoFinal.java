@@ -28,16 +28,16 @@ public class TaxiDemoFinal
     public static final int LIMITTOBEPOPULAR = 20000;
 
     
-    public static void main(String [] args) {
+    public static void main() {
         //Comentar o descomentar cada demo para ser ejecutada
 
         //Demo con 2 personajes y 2 taxis
-        DemoTwoPassengers demoOne = new DemoTwoPassengers();
-        demoOne.run();
+        // DemoTwoPassengers demoOne = new DemoTwoPassengers();
+        // demoOne.run();
 
         //Demo con 3 personajes y 3 taxis
-        //DemoInicialFinal demoIni = new DemoInicialFinal();
-        //demoIni.run();
+        DemoInicialFinal demoIni = new DemoInicialFinal();
+        demoIni.run();
 
         //Demo con varios personajes y taxis
         //DemoAvanzadaFinal demoAvan = new DemoAvanzadaFinal();
