@@ -13,7 +13,7 @@ import java.util.*;
 public class DemoAvanzadaFinal
 {
     TransportCompany company;
-    private List<Actor> actors;
+    private List<Taxi> actors;
 
     /**
      * Constructor for objects of class DemoOnePassanger
@@ -44,7 +44,7 @@ public class DemoAvanzadaFinal
      */
     public void step()
     {
-        for(Actor actor : actors) {
+        for(Taxi actor : actors) {
             actor.act();
         }
     }
@@ -69,12 +69,12 @@ public class DemoAvanzadaFinal
      * Taxis are created and added to the company
      */
     private void createTaxis() {
-        Taxi taxi1 = new TaxiExclusive(company, new Location(10, 13),"T2", FuelConsumption.MEDIUM, 7000);
-        Taxi taxi2 = new TaxiShuttle(company, new Location(0,0),"T1", FuelConsumption.LOW, 2);
-        Taxi taxi3 = new TaxiExclusive(company, new Location(16, 18),"T3", FuelConsumption.HIGH, 9000);
-        Taxi taxi4 = new TaxiShuttle(company, new Location(8,19),"T4", FuelConsumption.LOW, 3);
-        Taxi taxi5 = new TaxiShuttle(company, new Location(11,1),"T5", FuelConsumption.LOW, 3);
-        Taxi taxi6 = new TaxiExclusive(company, new Location(2, 10),"T6", FuelConsumption.HIGH, 9000);
+        Taxi taxi1 = new TaxiExclusive(company, new Location(10, 13),"T2", FuelComsumption.MEDIUM, 7000);
+        Taxi taxi2 = new TaxiShuttle(company, new Location(0,0),"T1", FuelComsumption.LOW, 2);
+        Taxi taxi3 = new TaxiExclusive(company, new Location(16, 18),"T3", FuelComsumption.HIGH, 9000);
+        Taxi taxi4 = new TaxiShuttle(company, new Location(8,19),"T4", FuelComsumption.LOW, 3);
+        Taxi taxi5 = new TaxiShuttle(company, new Location(11,1),"T5", FuelComsumption.LOW, 3);
+        Taxi taxi6 = new TaxiExclusive(company, new Location(2, 10),"T6", FuelComsumption.HIGH, 9000);
 
         company.addVehicle(taxi1);
         company.addVehicle(taxi2);
@@ -91,25 +91,25 @@ public class DemoAvanzadaFinal
      */
     private void createPassengers() {
         Passenger passenger1 = new PassengerNoVip(new Location(2, 2),
-                new Location(10, 10),"Kevin", 20, 2000, Reliable.LOW);
+                new Location(10, 10),"Kevin", 20, 2000, Reliability.LOW);
         Passenger passenger2 = new PassengerNoVip(new Location(4, 16),
-                new Location(19,0),"Margo", 30, 5000, Reliable.HIGH);
+                new Location(19,0),"Margo", 30, 5000, Reliability.HIGH);
         Passenger passenger3 = new PassengerNoVip(new Location(10, 10),
-                new Location(2,2),"Edith", 20, 4000, Reliable.HIGH);
+                new Location(2,2),"Edith", 20, 4000, Reliability.HIGH);
         Passenger passenger4 = new PassengerNoVip(new Location(15, 3),
-                new Location(7,1),"Stuart", 15, 1000, Reliable.LOW);
+                new Location(7,1),"Stuart", 15, 1000, Reliability.LOW);
         Passenger passenger5 = new PassengerNoVip(new Location(11, 6),
-                new Location(19,19),"Agnes", 10, 6000, Reliable.LOW);
+                new Location(19,19),"Agnes", 10, 6000, Reliability.LOW);
         Passenger passenger6 = new PassengerNoVip(new Location(13, 17),
-                new Location(0,0),"Scarlet", 25, 6000, Reliable.LOW);
+                new Location(0,0),"Scarlet", 25, 6000, Reliability.LOW);
         Passenger passenger7 = new PassengerVip(new Location(0, 0),
-                new Location(2, 6),"Lucy", 30, 30000, Reliable.HIGH);
+                new Location(2, 6),"Lucy", 30, 30000, Reliability.HIGH);
         Passenger passenger8 = new PassengerNoVip(new Location(6, 6),
-                new Location(5,2),"Gru", 20, 3000, Reliable.LOW);
+                new Location(5,2),"Gru", 20, 3000, Reliability.LOW);
         Passenger passenger9 = new PassengerVip(new Location(0, 7),
-                new Location(2,1),"Hector", 15, 90000, Reliable.HIGH);
+                new Location(2,1),"Hector", 15, 90000, Reliability.HIGH);
         Passenger passenger10 = new PassengerNoVip(new Location(8,5),
-                new Location(1,4),"Dr Nefario", 20, 7000, Reliable.HIGH);
+                new Location(1,4),"Dr Nefario", 20, 7000, Reliability.HIGH);
 
         company.addPassenger(passenger1);
         company.addPassenger(passenger2);
@@ -143,7 +143,7 @@ public class DemoAvanzadaFinal
     private void showInicialInfo() {
         List<Taxi> vehicles = company.getVehicles();
         List<Passenger> passengers = company.getPassengers();
-        Collections.sort(vehicles, new ComparadorNombreTaxi());
+        Collections.sort(vehicles, new ComparadorTaxiNombre());
         Collections.sort(passengers, new ComparadorNombrePassenger());
         System.out.println("--->> Simulation of the company: "+company.getName()+" <<---");
         System.out.println("-->> Taxis of the company <<--");
@@ -169,7 +169,7 @@ public class DemoAvanzadaFinal
     private void showFinalInfo() {
         List<Taxi> vehicles = company.getVehicles();
         List<Passenger> passengers = company.getPassengers();
-        Collections.sort(vehicles, new ComparadorPasTransportadosTaxi());
+        Collections.sort(vehicles, new ComparadorTaxiPasajeros());
         Collections.sort(passengers, new ComparadorNombrePassenger());
 
         System.out.println("");

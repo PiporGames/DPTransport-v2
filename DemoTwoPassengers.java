@@ -13,7 +13,7 @@ import java.util.*;
 public class DemoTwoPassengers
 {
     TransportCompany company;
-    private List<Actor> actors;
+    private List<Taxi> actors;
 
     /**
      * Constructor for objects of class DemoOnePassanger
@@ -44,7 +44,7 @@ public class DemoTwoPassengers
      */
     public void step()
     {
-        for(Actor actor : actors) {
+        for(Taxi actor : actors) {
             actor.act();
         }
     }
@@ -69,8 +69,8 @@ public class DemoTwoPassengers
      * Taxis are created and added to the company
      */
     private void createTaxis() {
-        Taxi taxi = new TaxiExclusive(company, new Location(10, 10),"T1", FuelConsumption.MEDIUM, 7000);
-        Taxi taxi2 = new TaxiShuttle(company, new Location(8,8),"T2", FuelConsumption.LOW, 2);
+        Taxi taxi = new TaxiExclusive(company, new Location(10, 10),"T1", FuelComsumption.MEDIUM, 7000);
+        Taxi taxi2 = new TaxiShuttle(company, new Location(8,8),"T2", FuelComsumption.LOW, 2);
 
         company.addVehicle(taxi);
         company.addVehicle(taxi2);
@@ -82,9 +82,9 @@ public class DemoTwoPassengers
      */
     private void createPassengers() {
         Passenger passenger = new PassengerVip(new Location(6, 6),
-                new Location(5,2),"Lucy", 30, 30000, Reliable.HIGH);
+                new Location(5,2),"Lucy", 30, 30000, Reliability.HIGH);
         Passenger passenger2 = new PassengerNoVip(new Location(2,3),
-                new Location(3,10),"Gru", 20, 2000, Reliable.LOW);
+                new Location(3,10),"Gru", 20, 2000, Reliability.LOW);
         company.addPassenger(passenger);        
         company.addPassenger(passenger2);
     }
@@ -109,7 +109,7 @@ public class DemoTwoPassengers
     private void showInicialInfo() {
         List<Taxi> vehicles = company.getVehicles();
         List<Passenger> passengers = company.getPassengers();
-        Collections.sort(vehicles, new ComparadorNombreTaxi());
+        Collections.sort(vehicles, new ComparadorTaxiNombre());
         Collections.sort(passengers, new ComparadorNombrePassenger());
         System.out.println("--->> Simulation of the company: "+company.getName()+" <<---");
         System.out.println("-->> Taxis of the company <<--");
@@ -118,7 +118,7 @@ public class DemoTwoPassengers
             System.out.println(taxi);
         }
         System.out.println("-->> Passengers requesting taxi <<--");
-        Collections.sort(passengers, new ComparadorPasHoraLlegada());
+        Collections.sort(passengers, new ComparadorArrivalTime());
 
         for(Passenger passenger : passengers) {
             System.out.println(passenger);
@@ -136,7 +136,7 @@ public class DemoTwoPassengers
     private void showFinalInfo() {
         List<Taxi> vehicles = company.getVehicles();
         List<Passenger> passengers = company.getPassengers();
-        Collections.sort(vehicles, new ComparadorPasTransportadosTaxi());
+        Collections.sort(vehicles, new ComparadorTaxiPasajeros());
         Collections.sort(passengers, new ComparadorNombrePassenger());
 
         System.out.println("");
