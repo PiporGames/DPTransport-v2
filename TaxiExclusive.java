@@ -29,9 +29,10 @@ public class TaxiExclusive extends Taxi implements SerPopularEnRedes
     }
     
     @Override
-    public void offloadPassenger(Passenger passenger)
+    public void offloadPassenger()
     {
-        super.offloadPassenger(passenger);
+        Passenger passenger = (Passenger) passengers.toArray()[0];
+        super.offloadPassenger();
         updatePopularity(passenger.getCreditCard());
     }
     

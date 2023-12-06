@@ -219,7 +219,7 @@ public abstract class Taxi
      */
     public void notifyPassengerArrival(Passenger passenger)
     {
-        offloadPassenger(passenger);
+        offloadPassenger();
         company.arrivedAtDestination(this, passenger);
     }
 
@@ -240,8 +240,9 @@ public abstract class Taxi
     /**
      * Offload the passenger.
      */
-    public void offloadPassenger(Passenger passenger)
+    public void offloadPassenger()
     {
+        Passenger passenger = (Passenger) passengers.toArray()[0];
         valuation += passenger.act();
         passengers.remove(passenger);
         if (passengers.isEmpty())
