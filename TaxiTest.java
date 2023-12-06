@@ -2,6 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import java.util.*;
 
 /**
  * The test class TaxiTest.
@@ -17,6 +18,7 @@ public class TaxiTest
     private Taxi taxi2;
     private Passenger passenger;
     private Passenger passenger2;
+    private Passenger passenger3;
     
     /**
      * Default constructor for test class TaxiTest
@@ -232,7 +234,19 @@ public class TaxiTest
     @Test
     public void testGetPassenger()
     {
-    
+        Set<Passenger> s1 = new TreeSet<>(new ComparadorArrivalTime());
+        s1.add(passenger);
+        taxi.pickup(passenger);
+        assertEquals(s1, taxi.getPassengers());
+        s1.add(passenger2);
+        taxi.pickup(passenger2);
+        assertEquals(s1, taxi.getPassengers());
+        
+        Set<Passenger> s2 = new TreeSet<>(new ComparadorArrivalTime());
+        s2.add(passenger2);
+        taxi2.pickup(passenger2);
+        assertEquals(s2, taxi2.getPassengers());
+        
     }
     
     /**
@@ -241,7 +255,23 @@ public class TaxiTest
     @Test
     public void testAct()
     {
-
+        company.addPassenger(passenger);
+        company.addVehicle(taxi);
+        company.requestPickup(passenger);
+        // Go to pickup
+        assertEquals(new Location(0,0), taxi.getLocation());
+        taxi.act();
+        assertEquals(new Location(1,1), taxi.getLocation());
+        taxi.act();
+        assertEquals(new Location(1,2), taxi.getLocation());  
+        
+        company2.addPassenger(passenger2);
+        company2.addVehicle(taxi2);
+        company2.requestPickup(passenger2);
+        // Go to pickup
+        assertEquals(new Location(1,1), taxi2.getLocation());
+        taxi2.act();
+        assertEquals(new Location(2,2), taxi2.getLocation());
     }
 }
 

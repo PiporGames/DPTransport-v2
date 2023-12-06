@@ -1,0 +1,187 @@
+<<<< TaxiShuttle T1 at location 0,0 occupation 4 go to pick up passenger Kevin at location 1,2
+@@@  Taxi: T1 moving to location 1,1
+<<<< TaxiShuttle T1 at location 1,2 occupation 4 picks up Kevin
+@@@  Taxi: T1 moving to location 1,2
+@@@  Taxi: T1 moving to location 2,3
+@@@  Taxi: T1 moving to location 3,4
+@@@  Taxi: T1 moving to location 4,5
+>>>> TaxiShuttle T1 at location 5,6 occupation 4 offloads PassengerNoVip Kevin travelling from location 1,2 to location 5,6 arrival time: 1 money in the credit card: 12000 <reliable: Low (value: 5)>
+@@@  Taxi: T1 moving to location 5,6
+<<<< TaxiExclusive T2 at location 1,1 occupation 1 go to pick up passenger Clara at location 2,2
+<<<< TaxiExclusive T2 at location 2,2 occupation 1 picks up Clara
+@@@  Taxi: T2 moving to location 2,2
+@@@  Taxi: T2 moving to location 3,3
+>>>> TaxiExclusive T2 at location 4,4 occupation 1 offloads PassengerVip Clara travelling from location 2,2 to location 4,4 arrival time: 1 money in the credit card: 29000 <reliable: High (value: 10)>
+@@@  Taxi: T2 moving to location 4,4
+<<<< TaxiShuttle T1 at location 0,0 occupation 4 go to pick up passenger Kevin at location 1,2
+@@@  Taxi: T1 moving to location 1,1
+<<<< TaxiShuttle T1 at location 1,2 occupation 4 picks up Kevin
+@@@  Taxi: T1 moving to location 1,2
+@@@  Taxi: T1 moving to location 2,3
+@@@  Taxi: T1 moving to location 3,4
+@@@  Taxi: T1 moving to location 4,5
+>>>> TaxiShuttle T1 at location 5,6 occupation 4 offloads PassengerNoVip Kevin travelling from location 1,2 to location 5,6 arrival time: 1 money in the credit card: 12000 <reliable: Low (value: 5)>
+@@@  Taxi: T1 moving to location 5,6
+<<<< TaxiExclusive T2 at location 1,1 occupation 1 go to pick up passenger Clara at location 2,2
+<<<< TaxiExclusive T2 at location 2,2 occupation 1 picks up Clara
+@@@  Taxi: T2 moving to location 2,2
+@@@  Taxi: T2 moving to location 3,3
+>>>> TaxiExclusive T2 at location 4,4 occupation 1 offloads PassengerVip Clara travelling from location 2,2 to location 4,4 arrival time: 1 money in the credit card: 29000 <reliable: High (value: 10)>
+@@@  Taxi: T2 moving to location 4,4
+<<<< TaxiShuttle T1 at location 0,0 occupation 4 go to pick up passenger Kevin at location 1,2
+@@@  Taxi: T1 moving to location 1,1
+<<<< TaxiShuttle T1 at location 1,2 occupation 4 picks up Kevin
+@@@  Taxi: T1 moving to location 1,2
+@@@  Taxi: T1 moving to location 2,3
+@@@  Taxi: T1 moving to location 3,4
+@@@  Taxi: T1 moving to location 4,5
+>>>> TaxiShuttle T1 at location 5,6 occupation 4 offloads PassengerNoVip Kevin travelling from location 1,2 to location 5,6 arrival time: 1 money in the credit card: 12000 <reliable: Low (value: 5)>
+@@@  Taxi: T1 moving to location 5,6
+<<<< TaxiExclusive T2 at location 1,1 occupation 1 go to pick up passenger Clara at location 2,2
+<<<< TaxiExclusive T2 at location 2,2 occupation 1 picks up Clara
+@@@  Taxi: T2 moving to location 2,2
+@@@  Taxi: T2 moving to location 3,3
+>>>> TaxiExclusive T2 at location 4,4 occupation 1 offloads PassengerVip Clara travelling from location 2,2 to location 4,4 arrival time: 1 money in the credit card: 29000 <reliable: High (value: 10)>
+@@@  Taxi: T2 moving to location 4,4
+<<<< TaxiShuttle T1 at location 0,0 occupation 4 go to pick up passenger Kevin at location 1,2
+@@@  Taxi: T1 moving to location 1,1
+<<<< TaxiShuttle T1 at location 1,2 occupation 4 picks up Kevin
+@@@  Taxi: T1 moving to location 1,2
+@@@  Taxi: T1 moving to location 2,3
+@@@  Taxi: T1 moving to location 3,4
+@@@  Taxi: T1 moving to location 4,5
+>>>> TaxiShuttle T1 at location 5,6 occupation 4 offloads PassengerNoVip Kevin travelling from location 1,2 to location 5,6 arrival time: 1 money in the credit card: 12000 <reliable: Low (value: 5)>
+@@@  Taxi: T1 moving to location 5,6
+<<<< TaxiExclusive T2 at location 1,1 occupation 1 go to pick up passenger Clara at location 2,2
+<<<< TaxiExclusive T2 at location 2,2 occupation 1 picks up Clara
+@@@  Taxi: T2 moving to location 2,2
+@@@  Taxi: T2 moving to location 3,3
+>>>> TaxiExclusive T2 at location 4,4 occupation 1 offloads PassengerVip Clara travelling from location 2,2 to location 4,4 arrival time: 1 money in the credit card: 29000 <reliable: High (value: 10)>
+@@@  Taxi: T2 moving to location 4,4
+<<<< TaxiShuttle T1 at location 0,0 occupation 4 go to pick up passenger Kevin at location 1,2
+@@@  Taxi: T1 moving to location 1,1
+<<<< TaxiShuttle T1 at location 1,2 occupation 4 picks up Kevin
+@@@  Taxi: T1 moving to location 1,2
+@@@  Taxi: T1 moving to location 2,3
+@@@  Taxi: T1 moving to location 3,4
+@@@  Taxi: T1 moving to location 4,5
+>>>> TaxiShuttle T1 at location 5,6 occupation 4 offloads PassengerNoVip Kevin travelling from location 1,2 to location 5,6 arrival time: 1 money in the credit card: 12000 <reliable: Low (value: 5)>
+@@@  Taxi: T1 moving to location 5,6
+<<<< TaxiExclusive T2 at location 1,1 occupation 1 go to pick up passenger Clara at location 2,2
+<<<< TaxiExclusive T2 at location 2,2 occupation 1 picks up Clara
+@@@  Taxi: T2 moving to location 2,2
+@@@  Taxi: T2 moving to location 3,3
+>>>> TaxiExclusive T2 at location 4,4 occupation 1 offloads PassengerVip Clara travelling from location 2,2 to location 4,4 arrival time: 1 money in the credit card: 29000 <reliable: High (value: 10)>
+@@@  Taxi: T2 moving to location 4,4
+<<<< TaxiShuttle T1 at location 0,0 occupation 4 go to pick up passenger Kevin at location 1,2
+@@@  Taxi: T1 moving to location 1,1
+<<<< TaxiShuttle T1 at location 1,2 occupation 4 picks up Kevin
+@@@  Taxi: T1 moving to location 1,2
+@@@  Taxi: T1 moving to location 2,3
+@@@  Taxi: T1 moving to location 3,4
+@@@  Taxi: T1 moving to location 4,5
+>>>> TaxiShuttle T1 at location 5,6 occupation 4 offloads PassengerNoVip Kevin travelling from location 1,2 to location 5,6 arrival time: 1 money in the credit card: 12000 <reliable: Low (value: 5)>
+@@@  Taxi: T1 moving to location 5,6
+<<<< TaxiExclusive T2 at location 1,1 occupation 1 go to pick up passenger Clara at location 2,2
+<<<< TaxiExclusive T2 at location 2,2 occupation 1 picks up Clara
+@@@  Taxi: T2 moving to location 2,2
+@@@  Taxi: T2 moving to location 3,3
+>>>> TaxiExclusive T2 at location 4,4 occupation 1 offloads PassengerVip Clara travelling from location 2,2 to location 4,4 arrival time: 1 money in the credit card: 29000 <reliable: High (value: 10)>
+@@@  Taxi: T2 moving to location 4,4
+<<<< TaxiShuttle T1 at location 0,0 occupation 4 go to pick up passenger Kevin at location 1,2
+@@@  Taxi: T1 moving to location 1,1
+<<<< TaxiShuttle T1 at location 1,2 occupation 4 picks up Kevin
+@@@  Taxi: T1 moving to location 1,2
+@@@  Taxi: T1 moving to location 2,3
+@@@  Taxi: T1 moving to location 3,4
+@@@  Taxi: T1 moving to location 4,5
+>>>> TaxiShuttle T1 at location 5,6 occupation 4 offloads PassengerNoVip Kevin travelling from location 1,2 to location 5,6 arrival time: 1 money in the credit card: 12000 <reliable: Low (value: 5)>
+@@@  Taxi: T1 moving to location 5,6
+<<<< TaxiExclusive T2 at location 1,1 occupation 1 go to pick up passenger Clara at location 2,2
+<<<< TaxiExclusive T2 at location 2,2 occupation 1 picks up Clara
+@@@  Taxi: T2 moving to location 2,2
+@@@  Taxi: T2 moving to location 3,3
+>>>> TaxiExclusive T2 at location 4,4 occupation 1 offloads PassengerVip Clara travelling from location 2,2 to location 4,4 arrival time: 1 money in the credit card: 29000 <reliable: High (value: 10)>
+@@@  Taxi: T2 moving to location 4,4
+<<<< TaxiShuttle T1 at location 0,0 occupation 4 go to pick up passenger Kevin at location 1,2
+@@@  Taxi: T1 moving to location 1,1
+<<<< TaxiShuttle T1 at location 1,2 occupation 4 picks up Kevin
+@@@  Taxi: T1 moving to location 1,2
+@@@  Taxi: T1 moving to location 2,3
+@@@  Taxi: T1 moving to location 3,4
+@@@  Taxi: T1 moving to location 4,5
+>>>> TaxiShuttle T1 at location 5,6 occupation 4 offloads PassengerNoVip Kevin travelling from location 1,2 to location 5,6 arrival time: 1 money in the credit card: 12000 <reliable: Low (value: 5)>
+@@@  Taxi: T1 moving to location 5,6
+<<<< TaxiExclusive T2 at location 1,1 occupation 1 go to pick up passenger Clara at location 2,2
+<<<< TaxiExclusive T2 at location 2,2 occupation 1 picks up Clara
+@@@  Taxi: T2 moving to location 2,2
+@@@  Taxi: T2 moving to location 3,3
+>>>> TaxiExclusive T2 at location 4,4 occupation 1 offloads PassengerVip Clara travelling from location 2,2 to location 4,4 arrival time: 1 money in the credit card: 29000 <reliable: High (value: 10)>
+@@@  Taxi: T2 moving to location 4,4
+<<<< TaxiShuttle T1 at location 0,0 occupation 4 go to pick up passenger Kevin at location 1,2
+@@@  Taxi: T1 moving to location 1,1
+<<<< TaxiShuttle T1 at location 1,2 occupation 4 picks up Kevin
+@@@  Taxi: T1 moving to location 1,2
+@@@  Taxi: T1 moving to location 2,3
+@@@  Taxi: T1 moving to location 3,4
+@@@  Taxi: T1 moving to location 4,5
+>>>> TaxiShuttle T1 at location 5,6 occupation 4 offloads PassengerNoVip Kevin travelling from location 1,2 to location 5,6 arrival time: 1 money in the credit card: 12000 <reliable: Low (value: 5)>
+@@@  Taxi: T1 moving to location 5,6
+<<<< TaxiExclusive T2 at location 1,1 occupation 1 go to pick up passenger Clara at location 2,2
+<<<< TaxiExclusive T2 at location 2,2 occupation 1 picks up Clara
+@@@  Taxi: T2 moving to location 2,2
+@@@  Taxi: T2 moving to location 3,3
+>>>> TaxiExclusive T2 at location 4,4 occupation 1 offloads PassengerVip Clara travelling from location 2,2 to location 4,4 arrival time: 1 money in the credit card: 29000 <reliable: High (value: 10)>
+@@@  Taxi: T2 moving to location 4,4
+<<<< TaxiShuttle T1 at location 0,0 occupation 4 go to pick up passenger Kevin at location 1,2
+@@@  Taxi: T1 moving to location 1,1
+<<<< TaxiShuttle T1 at location 1,2 occupation 4 picks up Kevin
+@@@  Taxi: T1 moving to location 1,2
+@@@  Taxi: T1 moving to location 2,3
+@@@  Taxi: T1 moving to location 3,4
+@@@  Taxi: T1 moving to location 4,5
+>>>> TaxiShuttle T1 at location 5,6 occupation 4 offloads PassengerNoVip Kevin travelling from location 1,2 to location 5,6 arrival time: 1 money in the credit card: 12000 <reliable: Low (value: 5)>
+@@@  Taxi: T1 moving to location 5,6
+<<<< TaxiExclusive T2 at location 1,1 occupation 1 go to pick up passenger Clara at location 2,2
+<<<< TaxiExclusive T2 at location 2,2 occupation 1 picks up Clara
+@@@  Taxi: T2 moving to location 2,2
+@@@  Taxi: T2 moving to location 3,3
+>>>> TaxiExclusive T2 at location 4,4 occupation 1 offloads PassengerVip Clara travelling from location 2,2 to location 4,4 arrival time: 1 money in the credit card: 29000 <reliable: High (value: 10)>
+@@@  Taxi: T2 moving to location 4,4
+<<<< TaxiShuttle T1 at location 0,0 occupation 4 go to pick up passenger Kevin at location 1,2
+@@@  Taxi: T1 moving to location 1,1
+<<<< TaxiShuttle T1 at location 1,2 occupation 4 picks up Kevin
+@@@  Taxi: T1 moving to location 1,2
+<<<< TaxiExclusive T2 at location 1,1 occupation 1 go to pick up passenger Clara at location 2,2
+<<<< TaxiExclusive T2 at location 2,2 occupation 1 picks up Clara
+@@@  Taxi: T2 moving to location 2,2
+<<<< TaxiShuttle T1 at location 0,0 occupation 4 go to pick up passenger Kevin at location 1,2
+@@@  Taxi: T1 moving to location 1,1
+<<<< TaxiShuttle T1 at location 1,2 occupation 4 picks up Kevin
+@@@  Taxi: T1 moving to location 1,2
+@@@  Taxi: T1 moving to location 2,3
+@@@  Taxi: T1 moving to location 3,4
+@@@  Taxi: T1 moving to location 4,5
+>>>> TaxiShuttle T1 at location 5,6 occupation 4 offloads PassengerNoVip Kevin travelling from location 1,2 to location 5,6 arrival time: 1 money in the credit card: 12000 <reliable: Low (value: 5)>
+@@@  Taxi: T1 moving to location 5,6
+<<<< TaxiExclusive T2 at location 1,1 occupation 1 go to pick up passenger Clara at location 2,2
+<<<< TaxiExclusive T2 at location 2,2 occupation 1 picks up Clara
+@@@  Taxi: T2 moving to location 2,2
+@@@  Taxi: T2 moving to location 3,3
+>>>> TaxiExclusive T2 at location 4,4 occupation 1 offloads PassengerVip Clara travelling from location 2,2 to location 4,4 arrival time: 1 money in the credit card: 29000 <reliable: High (value: 10)>
+@@@  Taxi: T2 moving to location 4,4
+<<<< TaxiShuttle T1 at location 0,0 occupation 4 go to pick up passenger Kevin at location 1,2
+@@@  Taxi: T1 moving to location 1,1
+<<<< TaxiShuttle T1 at location 1,2 occupation 4 picks up Kevin
+@@@  Taxi: T1 moving to location 1,2
+@@@  Taxi: T1 moving to location 2,3
+@@@  Taxi: T1 moving to location 3,4
+@@@  Taxi: T1 moving to location 4,5
+>>>> TaxiShuttle T1 at location 5,6 occupation 4 offloads PassengerNoVip Kevin travelling from location 1,2 to location 5,6 arrival time: 1 money in the credit card: 12000 <reliable: Low (value: 5)>
+@@@  Taxi: T1 moving to location 5,6
+<<<< TaxiExclusive T2 at location 1,1 occupation 1 go to pick up passenger Clara at location 2,2
+<<<< TaxiExclusive T2 at location 2,2 occupation 1 picks up Clara
+@@@  Taxi: T2 moving to location 2,2
+@@@  Taxi: T2 moving to location 3,3
+>>>> TaxiExclusive T2 at location 4,4 occupation 1 offloads PassengerVip Clara travelling from location 2,2 to location 4,4 arrival time: 1 money in the credit card: 29000 <reliable: High (value: 10)>
+@@@  Taxi: T2 moving to location 4,4

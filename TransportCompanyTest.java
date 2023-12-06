@@ -77,8 +77,7 @@ public class TransportCompanyTest
      */    
     @Test
     public void testArrivedAtPickup()
-    {
-        
+    {        
         assertEquals(false, company.requestPickup(p2));
         assertEquals(false, company.requestPickup(p1));
         assertEquals(true, company.requestPickup(p1));
