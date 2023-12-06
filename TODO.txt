@@ -1,7 +1,0 @@
-Lista de cosas por hacer (eliminar este archivo al entregar):
-
-Notas extras (bonus) ---
-
-x. En el proyecto se habrá hecho un uso correcto y justificado del mecanismo de excepciones (lanzar y capturar excepciones)
-x. Escritura de la salida por fichero con el mismo formato que el utilizado para la salida por defecto por pantalla.
-8. Pruebas unitarias del proyecto con JUnit
