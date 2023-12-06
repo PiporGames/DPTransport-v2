@@ -92,7 +92,7 @@ public class TransportCompany
      * @param location location to go
      * @return A free vehicle, or null if there is none.
      */
-    private Taxi scheduleVehicle(Location location)
+    private Taxi scheduleVehicle(Location location, int money)
     {
         Taxi vh = null;
         
@@ -106,16 +106,19 @@ public class TransportCompany
         Collections.sort(passengers, compArrival);
         
         Iterator <Taxi> it = vehicles.iterator();
-        
+       
         while(it.hasNext() && !enc){
             vh = it.next();
 
             if(vh.isFree()){
-                
-            if(assignments.get(vh).get(0).getCreditCard() > 2000){
-                
-            }
-                enc = true;
+                if(money > 20000){
+                    if(vh.getOccupation() == 1){
+                        enc = true;
+                    }
+                }
+                else {
+                    enc = true;
+                }
             }
         }
         
@@ -134,11 +137,12 @@ public class TransportCompany
         boolean result = false;
         if(taxi != null){
             if(assignments.containsKey(taxi)){
-                List<Passengers> assignedPassengers = assignments.remove(taxi);
+                List<Passenger> assignedPassengers = assignments.remove(taxi);
             }
             else{
-                
-                assignments.put(taxi, )
+                List<Passenger> passengers;
+                passengers.add(0, passenger);
+                assignments.put(taxi,passengers);
             }
             taxi.setPickupLocation(passenger.getPickup());
             assignments.put(taxi, );
