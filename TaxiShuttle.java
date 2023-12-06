@@ -1,7 +1,8 @@
 import java.util.*;
 
 /**
- * Write a description of class TaxiShuttle here.
+ * Modelate a taxi that brings people around.
+ * It is a shuttle version of the taxi.
  *
  * @author José, Manuel y David
  * @version 2023

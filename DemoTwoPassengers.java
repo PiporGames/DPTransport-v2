@@ -108,7 +108,7 @@ public class DemoTwoPassengers
      * Initial info is showed with the information about taxis and passengers
      */
     private void showInicialInfo() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt", true))){
             List<Taxi> vehicles = company.getVehicles();
             List<Passenger> passengers = company.getPassengers();
             Collections.sort(vehicles, new ComparadorTaxiNombre());
@@ -160,7 +160,7 @@ public class DemoTwoPassengers
      * Final info is showed with the information about taxis and passengers
      */
     private void showFinalInfo() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt", true))) {
             List<Taxi> vehicles = company.getVehicles();
             List<Passenger> passengers = company.getPassengers();
             Collections.sort(vehicles, new ComparadorTaxiPasajeros());
