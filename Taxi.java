@@ -230,7 +230,10 @@ public abstract class Taxi
      */
     public void pickup(Passenger passenger)
     {
-        if(passengers.size() < occupation) passengers.add(passenger);
+        if(passengers.size() < occupation){ 
+            passengers.add(passenger);
+            targetLocation = passengers.toArray()[0].getDestination();
+        }
     }
 
     /**
@@ -240,7 +243,10 @@ public abstract class Taxi
     {
         valuation += passenger.act();
         passengers.remove(passenger);
-        targetLocation= null;
+        if (passengers.isEmpty())
+            targetLocation = null;
+        else
+            targetLocation = passengers.toArray()[0].getDestination();    
     }
 
     /**
