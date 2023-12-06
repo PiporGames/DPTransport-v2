@@ -161,25 +161,30 @@ public class TransportCompany
      */
     public void arrivedAtPickup(Taxi taxi)
     {
-     
-        Iterator<Map.Entry<Taxi, List<Passenger>>> it = assignments.entrySet().iterator();
-        Map.Entry<Taxi, List<Passenger>> aux = null;
+
+        
+        Passenger pAux = assignments.get(taxi).get(0);
+        
+        taxi.pickup(pAux);
+        assignments.get(taxi).remove(pAux);
+        // Iterator<Map.Entry<Taxi, List<Passenger>>> it = assignments.entrySet().iterator();
+        // Map.Entry<Taxi, List<Passenger>> aux = null;
     
-        boolean enc = false;
-        while(it.hasNext() && !enc){
+        // boolean enc = false;
+        // while(it.hasNext() && !enc){
             
-            aux = it.next();
+            // aux = it.next();
             
-            Taxi tAux = aux.getKey();
-            if(tAux.equals(taxi)) {
-                enc = true;
-                Passenger passenger = aux.getValue().get(0);
-                it.remove();
-                tAux.pickup(passenger);
-                passenger.setTaxiName(tAux.getName());
-                System.out.println("<<<< " + taxi + " picks up " + passenger.getName());
-            }       
-        }
+            // Taxi tAux = aux.getKey();
+            // if(tAux.equals(taxi)) {
+                // enc = true;
+                // Passenger passenger = aux.getValue().get(0);
+                // it.remove();
+                // tAux.pickup(passenger);
+                // passenger.setTaxiName(tAux.getName());
+                // System.out.println("<<<< " + taxi + " picks up " + passenger.getName());
+            // }       
+        // }
     }
     
     public void showFinalInfo()

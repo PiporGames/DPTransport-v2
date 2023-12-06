@@ -263,13 +263,13 @@ public abstract class Taxi
         Passenger passenger = (Passenger) passengers.toArray()[0];
         valuation += passenger.act();
         passengers.remove(passenger);
-        if (passengers.isEmpty())
+        passengerNumber--;
+        if (passengerNumber == 0)
             targetLocation = null;
         else{
             Passenger aux = (Passenger) passengers.toArray()[0];
             targetLocation = aux.getDestination();  
         }
-        passengerNumber--;
     }
 
     /**
@@ -308,7 +308,7 @@ public abstract class Taxi
             location = location.nextLocation(targetLocation);
             System.out.println("@@@  Taxi: " + name + " moving to " + location);    
             if(location.equals(targetLocation)) {
-                if(passengers.isEmpty()) {
+                if(passengerNumber > passengers.size()) {
                     notifyPickupArrival();
                 } else {
                     notifyPassengerArrival((Passenger) 
