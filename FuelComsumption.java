@@ -1,9 +1,9 @@
 
 /**
- * Enumeration class FuelConsumption - write a description of the enum class here
+ * Enumeration class FuelConsumption
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author José, Manuel y David
+ * @version 2023
  */
 public enum FuelComsumption
 {

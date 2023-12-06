@@ -2,8 +2,8 @@
 /**
  * Write a description of class TaxiExclusive here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author José, Manuel y David
+ * @version 2023
  */
 public class TaxiExclusive extends Taxi implements SerPopularEnRedes
 {

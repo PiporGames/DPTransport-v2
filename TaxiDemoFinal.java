@@ -14,7 +14,7 @@
  * are requested. As the simulation is run, all the passengers
  * should be picked up and then taken to their destination.
  * 
- * @author DP Clasess
+ * @author José, Manuel y David
  * @version 2023
  */
 public class TaxiDemoFinal

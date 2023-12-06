@@ -3,8 +3,8 @@ import java.util.*;
 /**
  * Write a description of class TaxiShuttle here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author José, Manuel y David
+ * @version 2023
  */
 public class TaxiShuttle extends Taxi
 {

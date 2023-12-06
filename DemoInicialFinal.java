@@ -7,7 +7,7 @@ import java.io.*;
  * requested. As the simulation is run, the passengers
  * should be picked up and then taken to their destination.
  * 
- * @author David J. Barnes and Michael Kölling
+ * @author José, Manuel y David
  * @version 2016.02.29
  * @version 2023 DP Classes
  */

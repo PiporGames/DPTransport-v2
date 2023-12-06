@@ -2,8 +2,8 @@
 /**
  * Write a description of interface SerPopularEnRedes here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author José, Manuel y David
+ * @version 2023
  */
 public interface SerPopularEnRedes
 {
